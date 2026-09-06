@@ -27,7 +27,62 @@
             min-height: 100vh;
             margin: 0;
             padding: 0;
-            padding-bottom: 90px;
+        }
+
+        /* Top Sticky Announcement Ad Bar */
+        .top-announcement-ad {
+            position: sticky;
+            top: 0;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(129, 140, 248, 0.3);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            box-sizing: border-box;
+        }
+
+        .announcement-content {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .announcement-content span {
+            font-size: 1.1rem;
+        }
+
+        .announcement-text h4 {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #c084fc;
+        }
+
+        .announcement-text p {
+            margin: 0;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .top-cta-btn {
+            background: linear-gradient(135deg, #6366f1, #a855f7);
+            color: white;
+            text-decoration: none;
+            padding: 6px 16px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            transition: opacity 0.3s, transform 0.2s;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+            white-space: nowrap;
+        }
+
+        .top-cta-btn:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
         }
 
         header {
@@ -121,7 +176,7 @@
         /* Sidebar Styling */
         .sidebar {
             position: sticky;
-            top: 20px;
+            top: 80px;
         }
 
         .sidebar-widget {
@@ -241,64 +296,6 @@
             margin-bottom: 20px;
             text-align: center;
             backdrop-filter: blur(8px);
-        }
-
-        /* Sticky Bottom Ad Banner */
-        .sticky-bottom-ad {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(12px);
-            border-top: 1px solid rgba(129, 140, 248, 0.3);
-            padding: 12px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4);
-            z-index: 999;
-            box-sizing: border-box;
-        }
-
-        .sticky-ad-content {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .sticky-ad-content span {
-            font-size: 1.1rem;
-        }
-
-        .sticky-ad-text h4 {
-            margin: 0;
-            font-size: 0.95rem;
-            color: #c084fc;
-        }
-
-        .sticky-ad-text p {
-            margin: 2px 0 0;
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
-
-        .sticky-cta-btn {
-            background: linear-gradient(135deg, #6366f1, #a855f7);
-            color: white;
-            text-decoration: none;
-            padding: 8px 18px;
-            border-radius: 6px;
-            font-weight: 600;
-            font-size: 0.85rem;
-            transition: opacity 0.3s, transform 0.2s;
-            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
-            white-space: nowrap;
-        }
-
-        .sticky-cta-btn:hover {
-            opacity: 0.9;
-            transform: scale(1.02);
         }
 
         .news-card {
@@ -437,6 +434,18 @@
 
     <div id="toastContainer"></div>
 
+    <!-- Ad 3: Sabse Upar Fixed Top Announcement / Ad Bar -->
+    <div class="top-announcement-ad">
+        <div class="announcement-content">
+            <span>🔴</span>
+            <div class="announcement-text">
+                <h4>Special Live Stream Feed</h4>
+                <p>Click to access unrestricted live global broadcasts.</p>
+            </div>
+        </div>
+        <a href="https://omg10.com/4/11737854" target="_blank" class="top-cta-btn">Watch Now</a>
+    </div>
+
     <header>
         <h1>Chronicle 24/7</h1>
         <p>Your Live Global News Stream</p>
@@ -481,7 +490,7 @@
                 </div>
             </div>
 
-            <!-- Right Side: Sidebar with High-Visibility Ads -->
+            <!-- Right Side: Sidebar with Ads -->
             <aside class="sidebar">
                 <!-- Ad 1: Advertica Banner Ad -->
                 <div class="sidebar-widget">
@@ -489,7 +498,7 @@
                     <ins style="display:inline-block; width: 300px; height: 250px;" data-width="300" data-height="250" class="c3ed5df49a0" data-domain="//data527.click" data-affquery="/5d980c1bb9e9ce6fa349/3ed5df49a0/?placementName=advertica"></ins>
                 </div>
 
-                <!-- Ad 2: Fixed Script Ad with Wrapper -->
+                <!-- Ad 2: Script Ad -->
                 <div class="sidebar-widget">
                     <h3>Special Sponsor</h3>
                     <script type="text/javascript" src="//data527.click/abe870c21790218b7848/5e15bbce56/?placementName=default"></script>
@@ -498,18 +507,6 @@
 
         </div>
 
-    </div>
-
-    <!-- Ad 3: Sticky Bottom Bar Direct Link -->
-    <div class="sticky-bottom-ad">
-        <div class="sticky-ad-content">
-            <span>🔴</span>
-            <div class="sticky-ad-text">
-                <h4>Special Live Stream Feed</h4>
-                <p>Click to access unrestricted live global broadcasts.</p>
-            </div>
-        </div>
-        <a href="https://omg10.com/4/11737854" target="_blank" class="sticky-cta-btn">Watch Now</a>
     </div>
 
     <!-- Advertica Responsive Script Loader -->
@@ -613,7 +610,6 @@
                 `;
                 newsContainer.appendChild(card);
 
-                // Har pehle article ke baad ek In-Feed Ad box inject karna taaki ads zyada dikhein
                 if (index === 0) {
                     const adBox = document.createElement('div');
                     adBox.className = 'infeed-ad-box';
