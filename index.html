@@ -675,29 +675,21 @@
                 `;
                 newsContainer.appendChild(card);
 
-                // INDEX 0 (First News ke baad): Advertica In-Feed Ad (Updated with Wrapper & Fallback)
+                // INDEX 0 (First News ke baad): Advertica In-Feed Ad (Direct Static HTML Injection)
                 if (index === 0) {
                     const adBox = document.createElement('div');
                     adBox.className = 'ad-box';
                     adBox.innerHTML = `
                         <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:8px;">Sponsored Content</div>
-                        <div id="advertica-wrapper-${index}" style="min-height: 60px; display: flex; align-items: center; justify-content: center;">
-                            <span style="color: var(--text-muted); font-size: 0.85rem;">Loading Ad...</span>
-                        </div>
+                        <div id="advertica-slot"></div>
                     `;
                     newsContainer.appendChild(adBox);
 
-                    // Dynamic insertion with slight delay to ensure container exists
-                    setTimeout(() => {
-                        const wrapper = document.getElementById(`advertica-wrapper-${index}`);
-                        if (wrapper) {
-                            wrapper.innerHTML = ''; // Clear loading text
-                            const scriptTag = document.createElement('script');
-                            scriptTag.type = 'text/javascript';
-                            scriptTag.src = '//data527.click/abe870c21790218b7848/5e15bbce56/?placementName=random_infeed';
-                            wrapper.appendChild(scriptTag);
-                        }
-                    }, 100);
+                    // Safe script element creation outside innerHTML
+                    const advScript = document.createElement('script');
+                    advScript.type = 'text/javascript';
+                    advScript.src = '//data527.click/abe870c21790218b7848/5e15bbce56/?placementName=random_infeed';
+                    document.getElementById('advertica-slot').appendChild(advScript);
                 }
 
                 // INDEX 1 (Second News ke baad): A-ADS Code
@@ -717,7 +709,7 @@
 
         window.filterNews = function() {
             const query = document.getElementById('searchInput').value.toLowerCase();
-            const filtered = allNewsData.itemFilter ? allNewsData : allNewsData.filter(item => 
+            const filtered = allNewsData.filter(item => 
                 item.title.toLowerCase().includes(query) || 
                 item.content.toLowerCase().includes(query)
             );
@@ -761,9 +753,6 @@
         });
 
         window.deleteNewsItem = async function(id) {
-            if (!isAdminLoggedIn.status && !isAdminLoggedIn) {
-                // handle logic
-            }
             if (!isAdminLoggedIn) return;
             if (confirm("Are you sure you want to delete this news?")) {
                 const { error } = await _supabase
