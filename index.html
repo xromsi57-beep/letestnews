@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script type="text/javascript" src="//data527.click/abe870c21790218b7848/5e15bbce56/?placementName=default"></script>
     <meta charset="UTF-8">
+    <!-- Ad Network Verification Meta Tag -->
     <meta name="clckd" content="408d049f20483ea45eb96af97eb7d495" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chronicle 24/7 - Live Global News</title>
@@ -54,7 +54,7 @@
         }
 
         .container {
-            max-width: 850px;
+            max-width: 1100px;
             margin: 40px auto;
             padding: 0 20px;
         }
@@ -104,6 +104,43 @@
             box-shadow: 0 0 15px rgba(99, 102, 241, 0.2);
         }
 
+        /* Main Grid Layout with Sidebar */
+        .main-layout {
+            display: grid;
+            grid-template-columns: 1fr 340px;
+            gap: 30px;
+            align-items: start;
+        }
+
+        @media (max-width: 900px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Sidebar Styling */
+        .sidebar {
+            position: sticky;
+            top: 20px;
+        }
+
+        .sidebar-widget {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+            text-align: center;
+        }
+
+        .sidebar-widget h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: #c084fc;
+            margin-bottom: 15px;
+        }
+
         .admin-panel {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
@@ -111,7 +148,7 @@
             padding: 25px;
             border-radius: 16px;
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             display: none;
             animation: fadeIn 0.4s ease;
         }
@@ -191,17 +228,7 @@
             margin-bottom: 25px;
             border-left: 4px solid var(--accent);
             padding-left: 12px;
-        }
-
-        /* Advertica Banner Ad Container */
-        .ad-container {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 25px;
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 12px;
-            padding: 15px;
+            margin-top: 0;
         }
 
         /* Sticky Bottom Adsterra Banner */
@@ -431,15 +458,37 @@
             </form>
         </div>
 
-        <div class="news-feed">
-            <h2>Live Feed</h2>
-            <div id="newsContainer">
-                <div class="loading-text" style="text-align: center; color: var(--text-muted); padding: 40px;">Connecting to live feed...</div>
+        <!-- Main Layout with News Feed and Sidebar -->
+        <div class="main-layout">
+            
+            <!-- Left Side: News Feed -->
+            <div class="news-feed">
+                <h2>Live Feed</h2>
+                <div id="newsContainer">
+                    <div class="loading-text" style="text-align: center; color: var(--text-muted); padding: 40px;">Connecting to live feed...</div>
+                </div>
             </div>
+
+            <!-- Right Side: Sidebar with Ads -->
+            <aside class="sidebar">
+                <!-- Widget 1: Pehla Advertica Banner -->
+                <div class="sidebar-widget">
+                    <h3>Sponsored Ad</h3>
+                    <ins style="display:inline-block; width: 300px; height: 250px;" data-width="300" data-height="250" class="c3ed5df49a0" data-domain="//data527.click" data-affquery="/5d980c1bb9e9ce6fa349/3ed5df49a0/?placementName=advertica"></ins>
+                </div>
+
+                <!-- Widget 2: Naya Script Ad -->
+                <div class="sidebar-widget">
+                    <h3>Featured Sponsor</h3>
+                    <script type="text/javascript" src="//data527.click/abe870c21790218b7848/5e15bbce56/?placementName=default"></script>
+                </div>
+            </aside>
+
         </div>
 
     </div>
 
+    <!-- Sticky Bottom Bar with Direct Link -->
     <div class="sticky-bottom-ad">
         <div class="sticky-ad-content">
             <span>🔴</span>
@@ -451,6 +500,7 @@
         <a href="https://omg10.com/4/11737854" target="_blank" class="sticky-cta-btn">Watch Now</a>
     </div>
 
+    <!-- Advertica Responsive Script Loader -->
     <script src="//data527.click/js/responsive.js" async></script>
 
     <script>
@@ -550,14 +600,6 @@
                     </div>
                 `;
                 newsContainer.appendChild(card);
-
-                // Advertica Ad Tag inserted after every news card
-                const adCard = document.createElement('div');
-                adCard.className = 'ad-container';
-                adCard.innerHTML = `
-                    <ins style="display:inline-block; width: 300px; height: 250px;" data-width="300" data-height="250" class="c3ed5df49a0" data-domain="//data527.click" data-affquery="/5d980c1bb9e9ce6fa349/3ed5df49a0/?placementName=advertica"></ins>
-                `;
-                newsContainer.appendChild(adCard);
             });
         }
 
