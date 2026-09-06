@@ -193,7 +193,7 @@
             padding-left: 12px;
         }
 
-        /* Repeated Direct Link Banner shown after every news card */
+        /* Direct Link Banner shown after every news card */
         .direct-link-banner {
             background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.1));
             border: 1px solid rgba(129, 140, 248, 0.3);
@@ -235,7 +235,7 @@
             transform: scale(1.02);
         }
 
-        /* Sticky Bottom Adsterra Banner */
+        /* Sticky Bottom Ad Bar Restored */
         .sticky-bottom-ad {
             position: fixed;
             bottom: 0;
@@ -471,7 +471,7 @@
 
     </div>
 
-    <!-- Sticky Bottom Bar -->
+    <!-- Restored Sticky Bottom Bar with Direct Link -->
     <div class="sticky-bottom-ad">
         <div class="sticky-ad-content">
             <span>🔴</span>
@@ -581,7 +581,7 @@
                 `;
                 newsContainer.appendChild(card);
 
-                // --- DIRECT LINK BANNER AFTER EVERY NEWS CARD ---
+                // Direct Link Banner after every news card
                 const adCard = document.createElement('div');
                 adCard.className = 'direct-link-banner';
                 adCard.innerHTML = `
