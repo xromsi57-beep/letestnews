@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <!-- Ad Network Verification Meta Tag -->
     <meta name="clckd" content="408d049f20483ea45eb96af97eb7d495" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chronicle 24/7 - Live Global News</title>
@@ -16,6 +17,7 @@
             --accent: #6366f1;
             --accent-hover: #4f46e5;
             --danger: #ef4444;
+            --success: #10b981;
         }
 
         body {
@@ -25,7 +27,7 @@
             min-height: 100vh;
             margin: 0;
             padding: 0;
-            padding-bottom: 90px; /* Space for sticky bottom ad */
+            padding-bottom: 90px;
         }
 
         header {
@@ -77,6 +79,30 @@
         .login-trigger-btn:hover {
             border-color: var(--accent);
             color: var(--text-main);
+        }
+
+        /* Search Bar Styling */
+        .search-bar-container {
+            margin-bottom: 25px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 14px 20px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            color: var(--text-main);
+            font-size: 1rem;
+            outline: none;
+            backdrop-filter: blur(10px);
+            box-sizing: border-box;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .search-input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 15px rgba(99, 102, 241, 0.2);
         }
 
         .admin-panel {
@@ -168,7 +194,7 @@
             padding-left: 12px;
         }
 
-        /* Advertica Ad Container (Top) */
+        /* Advertica Ad Container */
         .ad-container {
             display: flex;
             justify-content: center;
@@ -245,11 +271,12 @@
             border-radius: 16px;
             margin-bottom: 20px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, border-color 0.3s;
         }
 
         .news-card:hover {
             transform: translateY(-3px);
+            border-color: rgba(129, 140, 248, 0.4);
         }
 
         .news-card h3 {
@@ -258,11 +285,17 @@
             color: var(--text-main);
         }
 
-        .news-date {
-            font-size: 0.85rem;
-            color: var(--text-muted);
+        .news-meta-info {
+            display: flex;
+            gap: 12px;
+            align-items: center;
             margin-bottom: 15px;
-            display: inline-block;
+            flex-wrap: wrap;
+        }
+
+        .news-date, .read-time {
+            font-size: 0.8rem;
+            color: var(--text-muted);
             background: rgba(255, 255, 255, 0.05);
             padding: 4px 10px;
             border-radius: 20px;
@@ -275,6 +308,29 @@
             font-size: 1.05rem;
         }
 
+        .card-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            align-items: center;
+        }
+
+        .share-btn {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            padding: 6px 14px;
+            font-size: 0.85rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .share-btn:hover {
+            background: var(--accent);
+            color: white;
+        }
+
         .delete-btn {
             background: rgba(239, 68, 68, 0.15);
             color: #fca5a5;
@@ -283,7 +339,6 @@
             font-size: 0.85rem;
             border-radius: 6px;
             cursor: pointer;
-            margin-top: 20px;
             display: none;
         }
 
@@ -296,11 +351,43 @@
             color: white;
         }
 
-        .loading-text, .empty-text {
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            padding: 40px;
+        /* Toast Notifications */
+        #toastContainer {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .toast {
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid var(--card-border);
+            color: var(--text-main);
+            padding: 12px 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+            backdrop-filter: blur(10px);
+            font-size: 0.9rem;
+            animation: slideIn 0.3s ease, fadeOut 0.3s ease 2.7s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .toast.success { border-left: 4px solid var(--success); }
+        .toast.error { border-left: 4px solid var(--danger); }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
         }
 
         @keyframes fadeIn {
@@ -311,6 +398,8 @@
 </head>
 <body>
 
+    <div id="toastContainer"></div>
+
     <header>
         <h1>Chronicle 24/7</h1>
         <p>Your Live Global News Stream</p>
@@ -320,6 +409,10 @@
         
         <div class="top-action-bar">
             <button class="login-trigger-btn" id="toggleLoginBtn" onclick="handleAdminAccess()">🔒 Admin Portal</button>
+        </div>
+
+        <div class="search-bar-container">
+            <input type="text" id="searchInput" class="search-input" placeholder="🔍 Search live news headlines or stories..." oninput="filterNews()">
         </div>
 
         <div class="admin-panel" id="adminPanel">
@@ -349,7 +442,7 @@
             </div>
 
             <div id="newsContainer">
-                <div class="loading-text">Connecting to live feed...</div>
+                <div class="loading-text" style="text-align: center; color: var(--text-muted); padding: 40px;">Connecting to live feed...</div>
             </div>
         </div>
 
@@ -380,6 +473,17 @@
         const adminPanel = document.getElementById('adminPanel');
 
         let isAdminLoggedIn = false;
+        let allNewsData = []; // Store raw data for instant searching
+
+        // Toast Notification Function
+        function showToast(message, type = 'success') {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            toast.innerHTML = `<span>${type === 'success' ? '✅' : '⚠️'}</span> ${message}`;
+            container.appendChild(toast);
+            setTimeout(() => toast.remove(), 3000);
+        }
 
         // Admin Security System (Password: admin123)
         window.handleAdminAccess = function() {
@@ -393,10 +497,10 @@
                 isAdminLoggedIn = true;
                 adminPanel.classList.add('active');
                 document.getElementById('toggleLoginBtn').textContent = "🔓 Admin Panel Open";
-                fetchNews(); // Refresh to show delete buttons
-                alert("Login Successful!");
+                renderNews(allNewsData); // Re-render to show delete buttons
+                showToast("Admin Login Successful!");
             } else if (password !== null) {
-                alert("Incorrect Password!");
+                showToast("Incorrect Password!", "error");
             }
         };
 
@@ -404,7 +508,7 @@
             adminPanel.classList.remove('active');
         };
 
-        // Fetch and Display News from Supabase
+        // Fetch News from Supabase
         async function fetchNews() {
             const { data, error } = await _supabase
                 .from('news')
@@ -413,21 +517,31 @@
 
             if (error) {
                 console.error('Error fetching news:', error);
-                newsContainer.innerHTML = '<div class="empty-text">Failed to load news.</div>';
+                newsContainer.innerHTML = '<div class="empty-text" style="text-align:center; color:var(--text-muted); padding:40px;">Failed to load news.</div>';
                 return;
             }
 
+            allNewsData = data || [];
+            renderNews(allNewsData);
+        }
+
+        // Render News Cards
+        function renderNews(dataList) {
             newsContainer.innerHTML = '';
 
-            if (!data || data.length === 0) {
-                newsContainer.innerHTML = '<div class="empty-text">No active news broadcasts right now.</div>';
+            if (!dataList || dataList.length === 0) {
+                newsContainer.innerHTML = '<div class="empty-text" style="text-align:center; color:var(--text-muted); padding:40px;">No matching news found.</div>';
                 return;
             }
 
-            data.forEach((news) => {
+            dataList.forEach((news) => {
                 let dateStr = new Date(news.created_at).toLocaleString('en-US', { 
                     month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' 
                 });
+
+                // Calculate estimated reading time
+                const wordCount = news.content ? news.content.split(/\s+/).length : 0;
+                const readTime = Math.ceil(wordCount / 180) || 1;
 
                 const card = document.createElement('div');
                 card.className = 'news-card';
@@ -436,9 +550,15 @@
 
                 card.innerHTML = `
                     <h3>${escapeHtml(news.title)}</h3>
-                    <div class="news-date">${dateStr}</div>
+                    <div class="news-meta-info">
+                        <span class="news-date">📅 ${dateStr}</span>
+                        <span class="read-time">⏱️ ${readTime} min read</span>
+                    </div>
                     <div class="news-content">${escapeHtml(news.content)}</div>
-                    <button class="${deleteBtnClass}" onclick="deleteNewsItem(${news.id})">Delete Article</button>
+                    <div class="card-actions">
+                        <button class="share-btn" onclick="shareArticle('${escapeHtml(news.title).replace(/'/g, "\\'")}')">🔗 Share</button>
+                        <button class="${deleteBtnClass}" onclick="deleteNewsItem(${news.id})">🗑️ Delete Article</button>
+                    </div>
                 `;
                 newsContainer.appendChild(card);
 
@@ -449,6 +569,26 @@
                 newsContainer.appendChild(adCard);
             });
         }
+
+        // Live Search / Filter Logic
+        window.filterNews = function() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const filtered = allNewsData.filter(item => 
+                item.title.toLowerCase().includes(query) || 
+                item.content.toLowerCase().includes(query)
+            );
+            renderNews(filtered);
+        };
+
+        // Share Article Functionality
+        window.shareArticle = function(title) {
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(window.location.href);
+                showToast(`Link copied for: "${title.substring(0, 25)}..."`);
+            } else {
+                showToast("Unable to copy link", "error");
+            }
+        };
 
         // Publish News to Supabase
         newsForm.addEventListener('submit', async function(e) {
@@ -469,10 +609,11 @@
             publishBtn.textContent = "Publish to Cloud";
 
             if (error) {
-                alert("Error publishing news: " + error.message);
+                showToast("Error publishing: " + error.message, "error");
             } else {
                 newsForm.reset();
                 adminPanel.classList.remove('active');
+                showToast("Article published successfully!");
                 fetchNews();
             }
         });
@@ -487,8 +628,9 @@
                     .eq('id', id);
 
                 if (error) {
-                    alert("Error deleting news: " + error.message);
+                    showToast("Error deleting: " + error.message, "error");
                 } else {
+                    showToast("Article deleted.");
                     fetchNews();
                 }
             }
@@ -500,7 +642,7 @@
             return text.toString().replace(/[&<>"']/g, function(m) { return map[m]; });
         }
 
-        // Load news when page opens
+        // Load news on startup
         fetchNews();
     </script>
 </body>
