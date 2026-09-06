@@ -29,52 +29,62 @@
             padding: 0;
         }
 
-        /* Top Sticky Announcement Ad Bar */
-        .top-announcement-ad {
+        /* Top Fixed Banner + Script Ad Container */
+        .top-fixed-ad-banner {
             position: sticky;
             top: 0;
-            background: rgba(15, 23, 42, 0.95);
+            background: rgba(15, 23, 42, 0.98);
             backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(129, 140, 248, 0.3);
+            border-bottom: 1px solid rgba(129, 140, 248, 0.4);
             padding: 10px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
             box-sizing: border-box;
+            gap: 15px;
+            flex-wrap: wrap;
         }
 
-        .announcement-content {
+        .top-ad-info {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            overflow: hidden;
         }
 
-        .announcement-content span {
-            font-size: 1.1rem;
+        .top-ad-info span {
+            font-size: 1.2rem;
         }
 
-        .announcement-text h4 {
+        .top-ad-text h4 {
             margin: 0;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: #c084fc;
         }
 
-        .announcement-text p {
-            margin: 0;
+        .top-ad-text p {
+            margin: 2px 0 0;
             font-size: 0.75rem;
             color: var(--text-muted);
+        }
+
+        /* Script Ad Container Integration inside Top Bar */
+        .top-script-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
         .top-cta-btn {
             background: linear-gradient(135deg, #6366f1, #a855f7);
             color: white;
             text-decoration: none;
-            padding: 6px 16px;
+            padding: 8px 18px;
             border-radius: 6px;
             font-weight: 600;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             transition: opacity 0.3s, transform 0.2s;
             box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
             white-space: nowrap;
@@ -176,7 +186,7 @@
         /* Sidebar Styling */
         .sidebar {
             position: sticky;
-            top: 80px;
+            top: 90px;
         }
 
         .sidebar-widget {
@@ -434,16 +444,21 @@
 
     <div id="toastContainer"></div>
 
-    <!-- Ad 3: Sabse Upar Fixed Top Announcement / Ad Bar -->
-    <div class="top-announcement-ad">
-        <div class="announcement-content">
+    <!-- Sabse Upar Fixed Ad Bar: Script Ad + Banner Text + Button -->
+    <div class="top-fixed-ad-banner">
+        <div class="top-ad-info">
             <span>🔴</span>
-            <div class="announcement-text">
+            <div class="top-ad-text">
                 <h4>Special Live Stream Feed</h4>
-                <p>Click to access unrestricted live global broadcasts.</p>
+                <p>Click to access unrestricted live broadcasts.</p>
             </div>
         </div>
-        <a href="https://omg10.com/4/11737854" target="_blank" class="top-cta-btn">Watch Now</a>
+        
+        <div class="top-script-wrapper">
+            <!-- Aapka problem wala script ad yahan properly container mein render hoga -->
+            <script type="text/javascript" src="//data527.click/abe870c21790218b7848/5e15bbce56/?placementName=topbar"></script>
+            <a href="https://omg10.com/4/11737854" target="_blank" class="top-cta-btn">Watch Now</a>
+        </div>
     </div>
 
     <header>
@@ -498,10 +513,10 @@
                     <ins style="display:inline-block; width: 300px; height: 250px;" data-width="300" data-height="250" class="c3ed5df49a0" data-domain="//data527.click" data-affquery="/5d980c1bb9e9ce6fa349/3ed5df49a0/?placementName=advertica"></ins>
                 </div>
 
-                <!-- Ad 2: Script Ad -->
+                <!-- Ad 2: Backup Sidebar Script Ad -->
                 <div class="sidebar-widget">
                     <h3>Special Sponsor</h3>
-                    <script type="text/javascript" src="//data527.click/abe870c21790218b7848/5e15bbce56/?placementName=default"></script>
+                    <script type="text/javascript" src="//data527.click/abe870c21790218b7848/5e15bbce56/?placementName=sidebar"></script>
                 </div>
             </aside>
 
