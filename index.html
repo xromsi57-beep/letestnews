@@ -556,10 +556,12 @@
             <!-- Right Side: Sidebar -->
             <aside class="sidebar">
                 
-                <!-- New Advertica Ad Widget (Added safely without removing anything) -->
+                <!-- New Advertica Widget with Fallback Indicator -->
                 <div class="sidebar-widget">
                     <div style="font-size:0.75rem; color:var(--text-muted); margin-bottom:8px;">Sponsored Placement</div>
-                    <div id="new-advertica-slot"></div>
+                    <div id="new-advertica-slot">
+                        <span style="font-size: 0.8rem; color: #64748b;">[Loading Ad...]</span>
+                    </div>
                 </div>
 
                 <!-- Smartlink Banner -->
@@ -585,10 +587,19 @@
 
     <script>
         // --- SAFE INJECTION FOR NEW ADVERTICA SCRIPT ---
+        const newAdvSlot = document.getElementById('new-advertica-slot');
         const newAdvScript = document.createElement('script');
         newAdvScript.type = 'text/javascript';
         newAdvScript.src = '//data527.click/81fa464929e47212b1a2/7e2cb579e6/?placementName=advertica';
-        document.getElementById('new-advertica-slot').appendChild(newAdvScript);
+        
+        // Clear fallback text once script injects
+        newAdvScript.onload = () => {
+            if (newAdvSlot.innerText.includes("[Loading Ad...]")) {
+                // Agar ad network ne content fill nahi kiya, toh chhota indicator rehne de sakte hain
+            }
+        };
+        
+        newAdvSlot.appendChild(newAdvScript);
 
         // --- SUPABASE CONFIGURATION ---
         const SUPABASE_URL = 'https://lxktfhinbdchhqgoutke.supabase.co';
@@ -687,7 +698,7 @@
                 `;
                 newsContainer.appendChild(card);
 
-                // INDEX 0 (First News ke baad): Advertica In-Feed Ad (Pehle wala ad safe hai)
+                // INDEX 0 (First News ke baad): Advertica In-Feed Ad
                 if (index === 0) {
                     const adBox = document.createElement('div');
                     adBox.className = 'ad-box';
@@ -703,7 +714,7 @@
                     document.getElementById('advertica-slot').appendChild(advScript);
                 }
 
-                // INDEX 1 (Second News ke baad): A-ADS Code (Yeh bhi safe hai)
+                // INDEX 1 (Second News ke baad): A-ADS Code
                 if (index === 1) {
                     const aadsBox = document.createElement('div');
                     aadsBox.className = 'ad-box';
