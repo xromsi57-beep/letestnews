@@ -28,10 +28,10 @@
             min-height: 100vh;
             margin: 0;
             padding: 0;
-            padding-bottom: 90px;
+            padding-bottom: 90px; /* Space for sticky bottom ad */
         }
 
-        /* Sticky Bottom Bar Ad */
+        /* Sticky Bottom Bar Ad (Ad 2 - UNTOUCHED) */
         .sticky-bottom-ad {
             position: fixed;
             bottom: 0;
@@ -85,13 +85,13 @@
             transform: scale(1.02);
         }
 
-        /* Interactive Reward Banner */
+        /* NEW INTERACTIVE AD BANNER (Smartlink-3454034 / Smartlink_1) */
         .interactive-reward-banner {
             background: linear-gradient(135deg, rgba(236, 72, 153, 0.15), rgba(139, 92, 246, 0.2));
             border: 2px dashed rgba(236, 72, 153, 0.5);
             border-radius: 16px;
             padding: 20px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             text-align: center;
             backdrop-filter: blur(10px);
             box-shadow: 0 8px 32px rgba(236, 72, 153, 0.15);
@@ -223,6 +223,7 @@
             box-shadow: 0 0 15px rgba(99, 102, 241, 0.2);
         }
 
+        /* Main Grid Layout with Sidebar */
         .main-layout {
             display: grid;
             grid-template-columns: 1fr 340px;
@@ -236,6 +237,7 @@
             }
         }
 
+        /* Sidebar Styling */
         .sidebar {
             position: sticky;
             top: 20px;
@@ -349,8 +351,8 @@
             margin-top: 0;
         }
 
-        /* Ad Box Styles */
-        .ad-box {
+        /* Ad 1: First News ke Upar wala Banner Ad Box (UNTOUCHED) */
+        .first-banner-ad-box {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
             border-radius: 16px;
@@ -359,7 +361,18 @@
             text-align: center;
             backdrop-filter: blur(8px);
             box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-            min-height: 90px;
+        }
+
+        /* Ad 3: In-Feed Ad Box (UNTOUCHED) */
+        .infeed-ad-box {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 25px;
+            text-align: center;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
         }
 
         .news-card {
@@ -498,7 +511,7 @@
 
     <div id="toastContainer"></div>
 
-    <!-- Sticky Bottom Bar Ad -->
+    <!-- AD 2: Fixed Bottom Sticky Bar (UNTOUCHED) -->
     <div class="sticky-bottom-ad">
         <div class="sticky-ad-content">
             <span>🔴</span>
@@ -549,23 +562,22 @@
             <!-- Left Side: News Feed -->
             <div class="news-feed">
                 <h2>Live Feed</h2>
+                
+                <!-- AD 1: First News ke Upar wala Banner Ad Box (UNTOUCHED) -->
+                <div class="first-banner-ad-box">
+                    <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:8px;">Sponsored Banner Ad</div>
+                    <ins style="display:inline-block; width: 300px; height: 250px;" data-width="300" data-height="250" class="c3ed5df49a0" data-domain="//data527.click" data-affquery="/5d980c1bb9e9ce6fa349/3ed5df49a0/?placementName=first_news_banner"></ins>
+                </div>
+
                 <div id="newsContainer">
                     <div class="loading-text" style="text-align: center; color: var(--text-muted); padding: 40px;">Connecting to live feed...</div>
                 </div>
             </div>
 
-            <!-- Right Side: Sidebar -->
+            <!-- Right Side: Sidebar with Smartlink-3454034 Interactive Button -->
             <aside class="sidebar">
                 
-                <!-- New Advertica Widget with Fallback Indicator -->
-                <div class="sidebar-widget">
-                    <div style="font-size:0.75rem; color:var(--text-muted); margin-bottom:8px;">Sponsored Placement</div>
-                    <div id="new-advertica-slot">
-                        <span style="font-size: 0.8rem; color: #64748b;">[Loading Ad...]</span>
-                    </div>
-                </div>
-
-                <!-- Smartlink Banner -->
+                <!-- NAYA SMARTLINK BANNER (Smartlink-3454034 / Smartlink_1) -->
                 <div class="interactive-reward-banner">
                     <span class="reward-badge">⭐ Special Offer</span>
                     <h3>Exclusive Bonus Rewards</h3>
@@ -574,7 +586,7 @@
                 </div>
 
                 <div class="sidebar-widget">
-                    <h3>ChannelUpdates</h3>
+                    <h3>Channel Updates</h3>
                     <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0;">Stay tuned for real-time updates and global news live streams.</p>
                 </div>
             </aside>
@@ -583,25 +595,10 @@
 
     </div>
 
-    <!-- Advertica Global Script Loader -->
+    <!-- Advertica Responsive Script Loader (UNTOUCHED) -->
     <script src="//data527.click/js/responsive.js" async></script>
 
     <script>
-        // --- SAFE INJECTION FOR NEW ADVERTICA SCRIPT ---
-        const newAdvSlot = document.getElementById('new-advertica-slot');
-        const newAdvScript = document.createElement('script');
-        newAdvScript.type = 'text/javascript';
-        newAdvScript.src = '//data527.click/81fa464929e47212b1a2/7e2cb579e6/?placementName=advertica';
-        
-        // Clear fallback text once script injects
-        newAdvScript.onload = () => {
-            if (newAdvSlot.innerText.includes("[Loading Ad...]")) {
-                // Agar ad network ne content fill nahi kiya, toh chhota indicator rehne de sakte hain
-            }
-        };
-        
-        newAdvSlot.appendChild(newAdvScript);
-
         // --- SUPABASE CONFIGURATION ---
         const SUPABASE_URL = 'https://lxktfhinbdchhqgoutke.supabase.co';
         const SUPABASE_ANON_KEY = 'sb_publishable_dABXCMeRrnUbouX9-AlYhw_ZEzDnJ7_';
@@ -699,33 +696,20 @@
                 `;
                 newsContainer.appendChild(card);
 
-                // INDEX 0 (First News ke baad): Advertica In-Feed Ad
+                // AD 3: In-Feed Ad (UNTOUCHED)
                 if (index === 0) {
                     const adBox = document.createElement('div');
-                    adBox.className = 'ad-box';
+                    adBox.className = 'infeed-ad-box';
                     adBox.innerHTML = `
                         <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:8px;">Sponsored Content</div>
-                        <div id="advertica-slot"></div>
+                        <div id="third-ad-wrapper"></div>
                     `;
                     newsContainer.appendChild(adBox);
 
-                    const advScript = document.createElement('script');
-                    advScript.type = 'text/javascript';
-                    advScript.src = '//data527.click/abe870c21790218b7848/5e15bbce56/?placementName=random_infeed';
-                    document.getElementById('advertica-slot').appendChild(advScript);
-                }
-
-                // INDEX 1 (Second News ke baad): A-ADS Code
-                if (index === 1) {
-                    const aadsBox = document.createElement('div');
-                    aadsBox.className = 'ad-box';
-                    aadsBox.innerHTML = `
-                        <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:8px;">Sponsored Banner Ad</div>
-                        <div style="width: 100%; margin: auto; position: relative;">
-                            <iframe data-aa='2454542' src='//acceptable.a-ads.com/2454542/?size=Adaptive' style='border:0; padding:0; width:100%; min-height:90px; height:auto; overflow:hidden; display: block; margin: auto;'></iframe>
-                        </div>
-                    `;
-                    newsContainer.appendChild(aadsBox);
+                    const scriptTag = document.createElement('script');
+                    scriptTag.type = 'text/javascript';
+                    scriptTag.src = '//data527.click/abe870c21790218b7848/5e15bbce56/?placementName=random_infeed';
+                    document.getElementById('third-ad-wrapper').appendChild(scriptTag);
                 }
             });
         }
