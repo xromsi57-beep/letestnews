@@ -574,7 +574,7 @@
 
     </div>
 
-    <!-- Advertica Responsive Script Loader -->
+    <!-- Advertica Global Script Loader -->
     <script src="//data527.click/js/responsive.js" async></script>
 
     <script>
@@ -675,23 +675,32 @@
                 `;
                 newsContainer.appendChild(card);
 
-                // INDEX 0 (First News ke baad): Advertica In-Feed Ad
+                // INDEX 0 (First News ke baad): Advertica In-Feed Ad (Updated with Wrapper & Fallback)
                 if (index === 0) {
                     const adBox = document.createElement('div');
                     adBox.className = 'ad-box';
                     adBox.innerHTML = `
                         <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:8px;">Sponsored Content</div>
-                        <div id="third-ad-wrapper"></div>
+                        <div id="advertica-wrapper-${index}" style="min-height: 60px; display: flex; align-items: center; justify-content: center;">
+                            <span style="color: var(--text-muted); font-size: 0.85rem;">Loading Ad...</span>
+                        </div>
                     `;
                     newsContainer.appendChild(adBox);
 
-                    const scriptTag = document.createElement('script');
-                    scriptTag.type = 'text/javascript';
-                    scriptTag.src = '//data527.click/abe870c21790218b7848/5e15bbce56/?placementName=random_infeed';
-                    document.getElementById('third-ad-wrapper').appendChild(scriptTag);
+                    // Dynamic insertion with slight delay to ensure container exists
+                    setTimeout(() => {
+                        const wrapper = document.getElementById(`advertica-wrapper-${index}`);
+                        if (wrapper) {
+                            wrapper.innerHTML = ''; // Clear loading text
+                            const scriptTag = document.createElement('script');
+                            scriptTag.type = 'text/javascript';
+                            scriptTag.src = '//data527.click/abe870c21790218b7848/5e15bbce56/?placementName=random_infeed';
+                            wrapper.appendChild(scriptTag);
+                        }
+                    }, 100);
                 }
 
-                // INDEX 1 (Second News ke baad / Second News ke upar): A-ADS Code
+                // INDEX 1 (Second News ke baad): A-ADS Code
                 if (index === 1) {
                     const aadsBox = document.createElement('div');
                     aadsBox.className = 'ad-box';
@@ -708,7 +717,7 @@
 
         window.filterNews = function() {
             const query = document.getElementById('searchInput').value.toLowerCase();
-            const filtered = allNewsData.filter(item => 
+            const filtered = allNewsData.itemFilter ? allNewsData : allNewsData.filter(item => 
                 item.title.toLowerCase().includes(query) || 
                 item.content.toLowerCase().includes(query)
             );
@@ -752,6 +761,9 @@
         });
 
         window.deleteNewsItem = async function(id) {
+            if (!isAdminLoggedIn.status && !isAdminLoggedIn) {
+                // handle logic
+            }
             if (!isAdminLoggedIn) return;
             if (confirm("Are you sure you want to delete this news?")) {
                 const { error } = await _supabase
