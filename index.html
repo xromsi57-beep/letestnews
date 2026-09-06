@@ -27,56 +27,46 @@
             min-height: 100vh;
             margin: 0;
             padding: 0;
+            padding-bottom: 80px; /* Space for sticky bottom ad */
         }
 
-        /* Top Fixed Banner + Ad 1 */
-        .top-fixed-ad-banner {
-            position: sticky;
-            top: 0;
-            background: rgba(15, 23, 42, 0.98);
+        /* Sticky Bottom Bar Ad (Ad 2) */
+        .sticky-bottom-ad {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.95);
             backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(129, 140, 248, 0.4);
-            padding: 10px 20px;
+            border-top: 1px solid rgba(129, 140, 248, 0.3);
+            padding: 12px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4);
             box-sizing: border-box;
-            gap: 15px;
-            flex-wrap: wrap;
         }
 
-        .top-ad-info {
+        .sticky-ad-content {
             display: flex;
             align-items: center;
             gap: 12px;
-            overflow: hidden;
         }
 
-        .top-ad-info span {
-            font-size: 1.2rem;
-        }
-
-        .top-ad-text h4 {
+        .sticky-ad-text h4 {
             margin: 0;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             color: #c084fc;
         }
 
-        .top-ad-text p {
-            margin: 2px 0 0;
+        .sticky-ad-text p {
+            margin: 0;
             font-size: 0.75rem;
             color: var(--text-muted);
         }
 
-        .top-script-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .top-cta-btn {
+        .sticky-cta-btn {
             background: linear-gradient(135deg, #6366f1, #a855f7);
             color: white;
             text-decoration: none;
@@ -89,7 +79,7 @@
             white-space: nowrap;
         }
 
-        .top-cta-btn:hover {
+        .sticky-cta-btn:hover {
             opacity: 0.9;
             transform: scale(1.02);
         }
@@ -185,7 +175,7 @@
         /* Sidebar Styling */
         .sidebar {
             position: sticky;
-            top: 90px;
+            top: 20px;
         }
 
         .sidebar-widget {
@@ -296,15 +286,28 @@
             margin-top: 0;
         }
 
-        /* In-Feed Advertisement Box */
+        /* Ad 1: First News ke Upar wala Banner Ad Box */
+        .first-banner-ad-box {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 25px;
+            text-align: center;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Ad 3: In-Feed / Random News ke Baad wala Ad Box */
         .infeed-ad-box {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
             border-radius: 16px;
-            padding: 15px;
-            margin-bottom: 20px;
+            padding: 20px;
+            margin-bottom: 25px;
             text-align: center;
             backdrop-filter: blur(8px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
         }
 
         .news-card {
@@ -443,19 +446,16 @@
 
     <div id="toastContainer"></div>
 
-    <!-- AD 1: Sabse Upar Fixed Top Bar (Direct Link + Button) -->
-    <div class="top-fixed-ad-banner">
-        <div class="top-ad-info">
+    <!-- AD 2: Fixed Bottom Sticky Bar -->
+    <div class="sticky-bottom-ad">
+        <div class="sticky-ad-content">
             <span>🔴</span>
-            <div class="top-ad-text">
+            <div class="sticky-ad-text">
                 <h4>Special Live Stream Feed</h4>
                 <p>Click to access unrestricted live broadcasts.</p>
             </div>
         </div>
-        
-        <div class="top-script-wrapper">
-            <a href="https://omg10.com/4/11737854" target="_blank" class="top-cta-btn">Watch Now</a>
-        </div>
+        <a href="https://omg10.com/4/11737854" target="_blank" class="sticky-cta-btn">Watch Now</a>
     </div>
 
     <header>
@@ -497,23 +497,23 @@
             <!-- Left Side: News Feed -->
             <div class="news-feed">
                 <h2>Live Feed</h2>
+                
+                <!-- AD 1: Pehli News ke theek Upar Banner Ad -->
+                <div class="first-banner-ad-box">
+                    <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:8px;">Sponsored Banner Ad</div>
+                    <ins style="display:inline-block; width: 300px; height: 250px;" data-width="300" data-height="250" class="c3ed5df49a0" data-domain="//data527.click" data-affquery="/5d980c1bb9e9ce6fa349/3ed5df49a0/?placementName=first_news_banner"></ins>
+                </div>
+
                 <div id="newsContainer">
                     <div class="loading-text" style="text-align: center; color: var(--text-muted); padding: 40px;">Connecting to live feed...</div>
                 </div>
             </div>
 
-            <!-- Right Side: Sidebar with AD 2 & AD 3 -->
+            <!-- Right Side: Sidebar -->
             <aside class="sidebar">
-                <!-- AD 2: Advertica Banner Ad -->
                 <div class="sidebar-widget">
-                    <h3>Sponsored Ad</h3>
-                    <ins style="display:inline-block; width: 300px; height: 250px;" data-width="300" data-height="250" class="c3ed5df49a0" data-domain="//data527.click" data-affquery="/5d980c1bb9e9ce6fa349/3ed5df49a0/?placementName=advertica"></ins>
-                </div>
-
-                <!-- AD 3: Aapka Teesri Script wala Ad (Sidebar Widget ke andar properly wrap kiya gaya hai) -->
-                <div class="sidebar-widget">
-                    <h3>Special Sponsor</h3>
-                    <script type="text/javascript" src="//data527.click/abe870c21790218b7848/5e15bbce56/?placementName=sidebar_ad3"></script>
+                    <h3>Channel Updates</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0;">Stay tuned for real-time updates and global news live streams.</p>
                 </div>
             </aside>
 
@@ -622,12 +622,13 @@
                 `;
                 newsContainer.appendChild(card);
 
+                // AD 3: Pehli news card ke turant baad random in-feed ad inject hoga
                 if (index === 0) {
                     const adBox = document.createElement('div');
                     adBox.className = 'infeed-ad-box';
                     adBox.innerHTML = `
-                        <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:8px;">Sponsored Advertisement</div>
-                        <script type="text/javascript" src="//data527.click/abe870c21790218b7848/5e15bbce56/?placementName=infeed"><\/script>
+                        <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:8px;">Sponsored Content</div>
+                        <script type="text/javascript" src="//data527.click/abe870c21790218b7848/5e15bbce56/?placementName=random_infeed"><\/script>
                     `;
                     newsContainer.appendChild(adBox);
                 }
