@@ -27,10 +27,10 @@
             min-height: 100vh;
             margin: 0;
             padding: 0;
-            padding-bottom: 90px; /* Space for sticky bottom ad */
+            padding-bottom: 90px;
         }
 
-        /* Sticky Bottom Bar Ad (Ad 2 - UNTOUCHED) */
+        /* Sticky Bottom Bar Ad */
         .sticky-bottom-ad {
             position: fixed;
             bottom: 0;
@@ -84,7 +84,7 @@
             transform: scale(1.02);
         }
 
-        /* NEW INTERACTIVE AD BANNER (Smartlink-3454034 / Smartlink_1) */
+        /* Interactive Reward Banner */
         .interactive-reward-banner {
             background: linear-gradient(135deg, rgba(236, 72, 153, 0.15), rgba(139, 92, 246, 0.2));
             border: 2px dashed rgba(236, 72, 153, 0.5);
@@ -222,7 +222,6 @@
             box-shadow: 0 0 15px rgba(99, 102, 241, 0.2);
         }
 
-        /* Main Grid Layout with Sidebar */
         .main-layout {
             display: grid;
             grid-template-columns: 1fr 340px;
@@ -236,7 +235,6 @@
             }
         }
 
-        /* Sidebar Styling */
         .sidebar {
             position: sticky;
             top: 20px;
@@ -350,20 +348,8 @@
             margin-top: 0;
         }
 
-        /* Ad 1: First News ke Upar wala Banner Ad Box (Ab yahan A-ADS laga diya hai) */
-        .first-banner-ad-box {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 16px;
-            padding: 20px;
-            margin-bottom: 25px;
-            text-align: center;
-            backdrop-filter: blur(8px);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-        }
-
-        /* Ad 3: In-Feed Ad Box (UNTOUCHED) */
-        .infeed-ad-box {
+        /* Ad Box Styles */
+        .ad-box {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
             border-radius: 16px;
@@ -510,7 +496,7 @@
 
     <div id="toastContainer"></div>
 
-    <!-- AD 2: Fixed Bottom Sticky Bar (UNTOUCHED) -->
+    <!-- Sticky Bottom Bar Ad -->
     <div class="sticky-bottom-ad">
         <div class="sticky-ad-content">
             <span>🔴</span>
@@ -561,27 +547,15 @@
             <!-- Left Side: News Feed -->
             <div class="news-feed">
                 <h2>Live Feed</h2>
-                
-                <!-- AD 1: First News ke Upar wala Banner Ad Box (Yahan A-ADS laga diya gaya hai) -->
-                <div class="first-banner-ad-box">
-                    <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:8px;">Sponsored Banner Ad</div>
-                    <!-- BEGIN AADS AD UNIT 2454542 -->
-                    <div id="frame" style="width: 100%;margin: auto;position: relative; z-index: 99998;">
-                         <iframe data-aa='2454542' src='//acceptable.a-ads.com/2454542/?size=Adaptive'
-                                     style='border:0; padding:0; width:70%; height:auto; overflow:hidden;display: block;margin: auto'></iframe>
-                    </div>
-                    <!-- END AADS AD UNIT 2454542 -->
-                </div>
-
                 <div id="newsContainer">
                     <div class="loading-text" style="text-align: center; color: var(--text-muted); padding: 40px;">Connecting to live feed...</div>
                 </div>
             </div>
 
-            <!-- Right Side: Sidebar with Smartlink-3454034 Interactive Button -->
+            <!-- Right Side: Sidebar -->
             <aside class="sidebar">
                 
-                <!-- NAYA SMARTLINK BANNER (Smartlink-3454034 / Smartlink_1) -->
+                <!-- Smartlink Banner -->
                 <div class="interactive-reward-banner">
                     <span class="reward-badge">⭐ Special Offer</span>
                     <h3>Exclusive Bonus Rewards</h3>
@@ -599,7 +573,7 @@
 
     </div>
 
-    <!-- Advertica Responsive Script Loader (UNTOUCHED) -->
+    <!-- Advertica Responsive Script Loader -->
     <script src="//data527.click/js/responsive.js" async></script>
 
     <script>
@@ -700,10 +674,10 @@
                 `;
                 newsContainer.appendChild(card);
 
-                // AD 3: In-Feed Ad (UNTOUCHED)
+                // INDEX 0 (First News ke baad): Advertica In-Feed Ad
                 if (index === 0) {
                     const adBox = document.createElement('div');
-                    adBox.className = 'infeed-ad-box';
+                    adBox.className = 'ad-box';
                     adBox.innerHTML = `
                         <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:8px;">Sponsored Content</div>
                         <div id="third-ad-wrapper"></div>
@@ -714,6 +688,19 @@
                     scriptTag.type = 'text/javascript';
                     scriptTag.src = '//data527.click/abe870c21790218b7848/5e15bbce56/?placementName=random_infeed';
                     document.getElementById('third-ad-wrapper').appendChild(scriptTag);
+                }
+
+                // INDEX 1 (Second News ke baad / Second News ke upar): Naya A-ADS Code
+                if (index === 1) {
+                    const aadsBox = document.createElement('div');
+                    aadsBox.className = 'ad-box';
+                    aadsBox.innerHTML = `
+                        <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:8px;">Sponsored Banner Ad</div>
+                        <div id="frame" style="width: 100%; margin: auto; position: relative; z-index: 99998;">
+                            <iframe data-aa='2454542' src='//acceptable.a-ads.com/2454542/?size=Adaptive' style='border:0; padding:0; width:70%; height:auto; overflow:hidden; display: block; margin: auto'></iframe>
+                        </div>
+                    `;
+                    newsContainer.appendChild(aadsBox);
                 }
             });
         }
