@@ -90,7 +90,7 @@
             border: 2px dashed rgba(236, 72, 153, 0.5);
             border-radius: 16px;
             padding: 20px;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             text-align: center;
             backdrop-filter: blur(10px);
             box-shadow: 0 8px 32px rgba(236, 72, 153, 0.15);
@@ -556,6 +556,12 @@
             <!-- Right Side: Sidebar -->
             <aside class="sidebar">
                 
+                <!-- New Advertica Ad Widget (Added safely without removing anything) -->
+                <div class="sidebar-widget">
+                    <div style="font-size:0.75rem; color:var(--text-muted); margin-bottom:8px;">Sponsored Placement</div>
+                    <div id="new-advertica-slot"></div>
+                </div>
+
                 <!-- Smartlink Banner -->
                 <div class="interactive-reward-banner">
                     <span class="reward-badge">⭐ Special Offer</span>
@@ -578,6 +584,12 @@
     <script src="//data527.click/js/responsive.js" async></script>
 
     <script>
+        // --- SAFE INJECTION FOR NEW ADVERTICA SCRIPT ---
+        const newAdvScript = document.createElement('script');
+        newAdvScript.type = 'text/javascript';
+        newAdvScript.src = '//data527.click/81fa464929e47212b1a2/7e2cb579e6/?placementName=advertica';
+        document.getElementById('new-advertica-slot').appendChild(newAdvScript);
+
         // --- SUPABASE CONFIGURATION ---
         const SUPABASE_URL = 'https://lxktfhinbdchhqgoutke.supabase.co';
         const SUPABASE_ANON_KEY = 'sb_publishable_dABXCMeRrnUbouX9-AlYhw_ZEzDnJ7_';
@@ -675,7 +687,7 @@
                 `;
                 newsContainer.appendChild(card);
 
-                // INDEX 0 (First News ke baad): Advertica In-Feed Ad (Direct Static HTML Injection)
+                // INDEX 0 (First News ke baad): Advertica In-Feed Ad (Pehle wala ad safe hai)
                 if (index === 0) {
                     const adBox = document.createElement('div');
                     adBox.className = 'ad-box';
@@ -685,14 +697,13 @@
                     `;
                     newsContainer.appendChild(adBox);
 
-                    // Safe script element creation outside innerHTML
                     const advScript = document.createElement('script');
                     advScript.type = 'text/javascript';
                     advScript.src = '//data527.click/abe870c21790218b7848/5e15bbce56/?placementName=random_infeed';
                     document.getElementById('advertica-slot').appendChild(advScript);
                 }
 
-                // INDEX 1 (Second News ke baad): A-ADS Code
+                // INDEX 1 (Second News ke baad): A-ADS Code (Yeh bhi safe hai)
                 if (index === 1) {
                     const aadsBox = document.createElement('div');
                     aadsBox.className = 'ad-box';
