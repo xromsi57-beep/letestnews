@@ -27,10 +27,10 @@
             min-height: 100vh;
             margin: 0;
             padding: 0;
-            padding-bottom: 80px; /* Space for sticky bottom ad */
+            padding-bottom: 90px; /* Space for sticky bottom ad */
         }
 
-        /* Sticky Bottom Bar Ad (Ad 2) */
+        /* Sticky Bottom Bar Ad (Ad 2 - UNTOUCHED) */
         .sticky-bottom-ad {
             position: fixed;
             bottom: 0;
@@ -82,6 +82,70 @@
         .sticky-cta-btn:hover {
             opacity: 0.9;
             transform: scale(1.02);
+        }
+
+        /* NEW INTERACTIVE AD BANNER (Naya Ad Link yahan lagaya gaya hai) */
+        .interactive-reward-banner {
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.15), rgba(139, 92, 246, 0.2));
+            border: 2px dashed rgba(236, 72, 153, 0.5);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 25px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(236, 72, 153, 0.15);
+            position: relative;
+            overflow: hidden;
+            animation: borderPulse 3s infinite;
+        }
+
+        @keyframes borderPulse {
+            0% { border-color: rgba(236, 72, 153, 0.4); }
+            50% { border-color: rgba(236, 72, 153, 0.9); }
+            100% { border-color: rgba(236, 72, 153, 0.4); }
+        }
+
+        .reward-badge {
+            display: inline-block;
+            background: #ec4899;
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 20px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .interactive-reward-banner h3 {
+            margin: 5px 0 8px;
+            font-size: 1.25rem;
+            color: #f472b6;
+        }
+
+        .interactive-reward-banner p {
+            margin: 0 0 15px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .interactive-claim-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #ec4899, #8b5cf6);
+            color: white;
+            text-decoration: none;
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 15px rgba(236, 72, 153, 0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .interactive-claim-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(236, 72, 153, 0.6);
         }
 
         header {
@@ -286,7 +350,7 @@
             margin-top: 0;
         }
 
-        /* Ad 1: First News ke Upar wala Banner Ad Box */
+        /* Ad 1: First News ke Upar wala Banner Ad Box (UNTOUCHED) */
         .first-banner-ad-box {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
@@ -298,7 +362,7 @@
             box-shadow: 0 4px 20px rgba(0,0,0,0.2);
         }
 
-        /* Ad 3: Static In-Feed Ad Box (Pehli news ke baad sidhe HTML mein rakha gaya hai) */
+        /* Ad 3: In-Feed Ad Box (UNTOUCHED) */
         .infeed-ad-box {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
@@ -446,7 +510,7 @@
 
     <div id="toastContainer"></div>
 
-    <!-- AD 2: Fixed Bottom Sticky Bar -->
+    <!-- AD 2: Fixed Bottom Sticky Bar (UNTOUCHED) -->
     <div class="sticky-bottom-ad">
         <div class="sticky-ad-content">
             <span>🔴</span>
@@ -498,7 +562,7 @@
             <div class="news-feed">
                 <h2>Live Feed</h2>
                 
-                <!-- AD 1: Pehli News ke theek Upar Banner Ad -->
+                <!-- AD 1: Pehli News ke theek Upar Banner Ad (UNTOUCHED) -->
                 <div class="first-banner-ad-box">
                     <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:8px;">Sponsored Banner Ad</div>
                     <ins style="display:inline-block; width: 300px; height: 250px;" data-width="300" data-height="250" class="c3ed5df49a0" data-domain="//data527.click" data-affquery="/5d980c1bb9e9ce6fa349/3ed5df49a0/?placementName=first_news_banner"></ins>
@@ -509,8 +573,17 @@
                 </div>
             </div>
 
-            <!-- Right Side: Sidebar -->
+            <!-- Right Side: Sidebar with New Interactive Ad Button -->
             <aside class="sidebar">
+                
+                <!-- NAYA INTERACTIVE REWARD AD BANNER (Naya Link yahan set kiya gaya hai) -->
+                <div class="interactive-reward-banner">
+                    <span class="reward-badge">⭐ Special Offer</span>
+                    <h3>Exclusive Bonus Rewards</h3>
+                    <p>Click below to unlock premium access & rewards instantly.</p>
+                    <a href="https://www.profitableratecpmnetwork.com/fcsxqmrtf?key=77785123756f4a00c1f2d566da9c0500" target="_blank" class="interactive-claim-btn">Claim Reward Now</a>
+                </div>
+
                 <div class="sidebar-widget">
                     <h3>Channel Updates</h3>
                     <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0;">Stay tuned for real-time updates and global news live streams.</p>
@@ -521,7 +594,7 @@
 
     </div>
 
-    <!-- Advertica Responsive Script Loader -->
+    <!-- Advertica Responsive Script Loader (UNTOUCHED) -->
     <script src="//data527.click/js/responsive.js" async></script>
 
     <script>
@@ -622,7 +695,7 @@
                 `;
                 newsContainer.appendChild(card);
 
-                // AD 3: Yahan ab humne script tag ko bilkul direct aur static HTML string ke roop mein rakha hai
+                // AD 3: In-Feed Ad (UNTOUCHED)
                 if (index === 0) {
                     const adBox = document.createElement('div');
                     adBox.className = 'infeed-ad-box';
@@ -632,7 +705,6 @@
                     `;
                     newsContainer.appendChild(adBox);
 
-                    // Static Script Injection for Ad 3
                     const scriptTag = document.createElement('script');
                     scriptTag.type = 'text/javascript';
                     scriptTag.src = '//data527.click/abe870c21790218b7848/5e15bbce56/?placementName=random_infeed';
@@ -687,7 +759,7 @@
         });
 
         window.deleteNewsItem = async function(id) {
-            if (!isAdminLoggedIn, !isAdminLoggedIn) return;
+            if (!isAdminLoggedIn) return;
             if (confirm("Are you sure you want to delete this news?")) {
                 const { error } = await _supabase
                     .from('news')
