@@ -81,7 +81,6 @@
             color: var(--text-main);
         }
 
-        /* Search Bar Styling */
         .search-bar-container {
             margin-bottom: 25px;
         }
@@ -194,15 +193,46 @@
             padding-left: 12px;
         }
 
-        /* Advertica Ad Container */
-        .ad-container {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 25px;
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 12px;
-            padding: 15px;
+        /* Repeated Direct Link Banner shown after every news card */
+        .direct-link-banner {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.1));
+            border: 1px solid rgba(129, 140, 248, 0.3);
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .direct-link-banner h3 {
+            margin: 0 0 6px 0;
+            color: #c084fc;
+            font-size: 1.1rem;
+        }
+
+        .direct-link-banner p {
+            margin: 0 0 12px 0;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .banner-action-btn {
+            background: linear-gradient(135deg, #6366f1, #a855f7);
+            color: white;
+            text-decoration: none;
+            padding: 8px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            display: inline-block;
+            transition: transform 0.2s, opacity 0.2s;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+        }
+
+        .banner-action-btn:hover {
+            opacity: 0.95;
+            transform: scale(1.02);
         }
 
         /* Sticky Bottom Adsterra Banner */
@@ -351,7 +381,6 @@
             color: white;
         }
 
-        /* Toast Notifications */
         #toastContainer {
             position: fixed;
             top: 20px;
@@ -435,12 +464,6 @@
 
         <div class="news-feed">
             <h2>Live Feed</h2>
-            
-            <div class="ad-container">
-                <ins style="display:inline-block; width: 300px; height: 250px;" data-width="300" data-height="250" class="c3ed5df49a0" data-domain="//data527.click" data-affquery="/5d980c1bb9e9ce6fa349/3ed5df49a0/?placementName=advertica"></ins>
-                <script src="//data527.click/js/responsive.js" async></script>
-            </div>
-
             <div id="newsContainer">
                 <div class="loading-text" style="text-align: center; color: var(--text-muted); padding: 40px;">Connecting to live feed...</div>
             </div>
@@ -448,6 +471,7 @@
 
     </div>
 
+    <!-- Sticky Bottom Bar -->
     <div class="sticky-bottom-ad">
         <div class="sticky-ad-content">
             <span>🔴</span>
@@ -456,7 +480,7 @@
                 <p>Click to access unrestricted live global broadcasts.</p>
             </div>
         </div>
-        <a href="https://www.profitableratecpmnetwork.com/fcsxqmrtf?key=77785123756f4a00c1f2d566da9c0500" target="_blank" class="sticky-cta-btn">Watch Now</a>
+        <a href="https://omg10.com/4/11737854" target="_blank" class="sticky-cta-btn">Watch Now</a>
     </div>
 
     <script>
@@ -473,9 +497,8 @@
         const adminPanel = document.getElementById('adminPanel');
 
         let isAdminLoggedIn = false;
-        let allNewsData = []; // Store raw data for instant searching
+        let allNewsData = [];
 
-        // Toast Notification Function
         function showToast(message, type = 'success') {
             const container = document.getElementById('toastContainer');
             const toast = document.createElement('div');
@@ -485,7 +508,6 @@
             setTimeout(() => toast.remove(), 3000);
         }
 
-        // Admin Security System (Password: admin123)
         window.handleAdminAccess = function() {
             if (isAdminLoggedIn) {
                 adminPanel.classList.toggle('active');
@@ -497,7 +519,7 @@
                 isAdminLoggedIn = true;
                 adminPanel.classList.add('active');
                 document.getElementById('toggleLoginBtn').textContent = "🔓 Admin Panel Open";
-                renderNews(allNewsData); // Re-render to show delete buttons
+                renderNews(allNewsData);
                 showToast("Admin Login Successful!");
             } else if (password !== null) {
                 showToast("Incorrect Password!", "error");
@@ -508,7 +530,6 @@
             adminPanel.classList.remove('active');
         };
 
-        // Fetch News from Supabase
         async function fetchNews() {
             const { data, error } = await _supabase
                 .from('news')
@@ -525,7 +546,6 @@
             renderNews(allNewsData);
         }
 
-        // Render News Cards
         function renderNews(dataList) {
             newsContainer.innerHTML = '';
 
@@ -539,7 +559,6 @@
                     month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' 
                 });
 
-                // Calculate estimated reading time
                 const wordCount = news.content ? news.content.split(/\s+/).length : 0;
                 const readTime = Math.ceil(wordCount / 180) || 1;
 
@@ -562,15 +581,18 @@
                 `;
                 newsContainer.appendChild(card);
 
-                // Ad after every news card
+                // --- DIRECT LINK BANNER AFTER EVERY NEWS CARD ---
                 const adCard = document.createElement('div');
-                adCard.className = 'ad-container';
-                adCard.innerHTML = `<ins style="display:inline-block; width: 300px; height: 250px;" data-width="300" data-height="250" class="c3ed5df49a0" data-domain="//data527.click" data-affquery="/5d980c1bb9e9ce6fa349/3ed5df49a0/?placementName=advertica"></ins>`;
+                adCard.className = 'direct-link-banner';
+                adCard.innerHTML = `
+                    <h3>⚡ Featured Global Broadcast</h3>
+                    <p>Click below to tune into our high-speed live stream network partner.</p>
+                    <a href="https://omg10.com/4/11737854" target="_blank" class="banner-action-btn">Access Live Stream Now</a>
+                `;
                 newsContainer.appendChild(adCard);
             });
         }
 
-        // Live Search / Filter Logic
         window.filterNews = function() {
             const query = document.getElementById('searchInput').value.toLowerCase();
             const filtered = allNewsData.filter(item => 
@@ -580,7 +602,6 @@
             renderNews(filtered);
         };
 
-        // Share Article Functionality
         window.shareArticle = function(title) {
             if (navigator.clipboard) {
                 navigator.clipboard.writeText(window.location.href);
@@ -590,7 +611,6 @@
             }
         };
 
-        // Publish News to Supabase
         newsForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             if (!isAdminLoggedIn) return;
@@ -618,7 +638,6 @@
             }
         });
 
-        // Delete News Item
         window.deleteNewsItem = async function(id) {
             if (!isAdminLoggedIn) return;
             if (confirm("Are you sure you want to delete this news?")) {
@@ -642,7 +661,6 @@
             return text.toString().replace(/[&<>"']/g, function(m) { return map[m]; });
         }
 
-        // Load news on startup
         fetchNews();
     </script>
 </body>
