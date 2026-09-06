@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- Ad Network Verification Meta Tag -->
     <meta name="clckd" content="408d049f20483ea45eb96af97eb7d495" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chronicle 24/7 - Live Global News</title>
@@ -193,49 +192,18 @@
             padding-left: 12px;
         }
 
-        /* Direct Link Banner shown after every news card */
-        .direct-link-banner {
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.1));
-            border: 1px solid rgba(129, 140, 248, 0.3);
-            border-radius: 16px;
-            padding: 20px;
-            text-align: center;
-            margin-bottom: 20px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        /* Advertica Banner Ad Container */
+        .ad-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 25px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 15px;
         }
 
-        .direct-link-banner h3 {
-            margin: 0 0 6px 0;
-            color: #c084fc;
-            font-size: 1.1rem;
-        }
-
-        .direct-link-banner p {
-            margin: 0 0 12px 0;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-        }
-
-        .banner-action-btn {
-            background: linear-gradient(135deg, #6366f1, #a855f7);
-            color: white;
-            text-decoration: none;
-            padding: 8px 20px;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 0.85rem;
-            display: inline-block;
-            transition: transform 0.2s, opacity 0.2s;
-            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
-        }
-
-        .banner-action-btn:hover {
-            opacity: 0.95;
-            transform: scale(1.02);
-        }
-
-        /* Sticky Bottom Ad Bar Restored */
+        /* Sticky Bottom Adsterra Banner */
         .sticky-bottom-ad {
             position: fixed;
             bottom: 0;
@@ -471,7 +439,6 @@
 
     </div>
 
-    <!-- Restored Sticky Bottom Bar with Direct Link -->
     <div class="sticky-bottom-ad">
         <div class="sticky-ad-content">
             <span>🔴</span>
@@ -482,6 +449,8 @@
         </div>
         <a href="https://omg10.com/4/11737854" target="_blank" class="sticky-cta-btn">Watch Now</a>
     </div>
+
+    <script src="//data527.click/js/responsive.js" async></script>
 
     <script>
         // --- SUPABASE CONFIGURATION ---
@@ -581,13 +550,11 @@
                 `;
                 newsContainer.appendChild(card);
 
-                // Direct Link Banner after every news card
+                // Advertica Ad Tag inserted after every news card
                 const adCard = document.createElement('div');
-                adCard.className = 'direct-link-banner';
+                adCard.className = 'ad-container';
                 adCard.innerHTML = `
-                    <h3>⚡ Featured Global Broadcast</h3>
-                    <p>Click below to tune into our high-speed live stream network partner.</p>
-                    <a href="https://omg10.com/4/11737854" target="_blank" class="banner-action-btn">Access Live Stream Now</a>
+                    <ins style="display:inline-block; width: 300px; height: 250px;" data-width="300" data-height="250" class="c3ed5df49a0" data-domain="//data527.click" data-affquery="/5d980c1bb9e9ce6fa349/3ed5df49a0/?placementName=advertica"></ins>
                 `;
                 newsContainer.appendChild(adCard);
             });
