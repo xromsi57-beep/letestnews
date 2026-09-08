@@ -5,20 +5,20 @@
     <!-- Ad Network Verification Meta Tag -->
     <meta name="clckd" content="408d049f20483ea45eb96af97eb7d495" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chronicle 24/7 - Live Global News</title>
+    <title> Letest news - Live Global News</title>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
         :root {
-            /* Theme Background (White Base) */
-            --bg-gradient: #ffffff;
-            --card-bg: #f8fafc;
-            --card-border: #e2e8f0;
+            /* Soft Neutral Background (Eye-Friendly Tint) */
+            --bg-gradient: linear-gradient(180deg, #f1f5f9 0%, #e2e8f0 100%);
+            --card-bg: #ffffff;
+            --card-border: #cbd5e1;
             --text-main: #0f172a;
             --text-muted: #64748b;
             
             /* Custom Color Palette */
-            --color-red: #ef4444;
-            --color-red-hover: #dc2626;
+            --color-red: #dc2626;
+            --color-red-hover: #b91c1c;
             --color-skyblue: #0284c7;
             --color-brown: #92400e;
             --color-purple: #7c3aed;
@@ -29,14 +29,15 @@
         body {
             font-family: 'Inter', system-ui, -apple-system, sans-serif;
             background: var(--bg-gradient);
+            background-attachment: fixed;
             color: var(--text-main);
             min-height: 100vh;
             margin: 0;
             padding: 0;
-            padding-bottom: 90px; /* Space for sticky bottom ad */
+            padding-bottom: 90px;
         }
 
-        /* Sticky Bottom Bar Ad (Ad 2) */
+        /* Sticky Bottom Bar Ad */
         .sticky-bottom-ad {
             position: fixed;
             bottom: 0;
@@ -81,7 +82,7 @@
             font-weight: 700;
             font-size: 0.85rem;
             transition: opacity 0.3s, transform 0.2s;
-            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+            box-shadow: 0 4px 12px rgba(220, 38, 38, 0.25);
             white-space: nowrap;
         }
 
@@ -90,9 +91,9 @@
             transform: scale(1.03);
         }
 
-        /* Interactive Reward Banner (Smartlink) */
+        /* Interactive Reward Banner */
         .interactive-reward-banner {
-            background: linear-gradient(135deg, rgba(124, 58, 237, 0.08), rgba(2, 132, 199, 0.08));
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.1), rgba(2, 132, 199, 0.1));
             border: 2px dashed var(--color-purple);
             border-radius: 16px;
             padding: 20px;
@@ -144,13 +145,13 @@
             border-radius: 8px;
             font-weight: 700;
             font-size: 0.95rem;
-            box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+            box-shadow: 0 4px 15px rgba(124, 58, 237, 0.25);
             transition: transform 0.2s, box-shadow 0.2s;
         }
 
         .interactive-claim-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(2, 132, 199, 0.35);
+            box-shadow: 0 6px 20px rgba(2, 132, 199, 0.3);
         }
 
         /* Advertica Sidebar Container */
@@ -184,7 +185,8 @@
             text-align: center;
             padding: 45px 20px;
             border-bottom: 1px solid var(--card-border);
-            background: #ffffff;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
         }
 
@@ -218,7 +220,7 @@
         }
 
         .login-trigger-btn {
-            background: rgba(124, 58, 237, 0.08);
+            background: rgba(124, 58, 237, 0.1);
             color: var(--color-purple);
             border: 1px solid var(--color-purple);
             padding: 8px 18px;
@@ -249,7 +251,7 @@
             font-size: 1.05rem;
             outline: none;
             box-sizing: border-box;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
             transition: border-color 0.3s, box-shadow 0.3s;
         }
 
@@ -283,6 +285,7 @@
             padding: 20px;
             margin-bottom: 20px;
             text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
         }
 
         .sidebar-widget h3 {
@@ -409,7 +412,7 @@
             padding: 25px;
             border-radius: 16px;
             margin-bottom: 22px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
             transition: transform 0.3s ease, border-color 0.3s, box-shadow 0.3s;
         }
 
@@ -477,9 +480,9 @@
         }
 
         .delete-btn {
-            background: rgba(239, 68, 68, 0.08);
+            background: rgba(220, 38, 38, 0.08);
             color: var(--color-red);
-            border: 1px solid rgba(239, 68, 68, 0.3);
+            border: 1px solid rgba(220, 38, 38, 0.3);
             padding: 8px 16px;
             font-size: 0.85rem;
             border-radius: 6px;
