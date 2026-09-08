@@ -9,20 +9,20 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
         :root {
-            /* Theme Background (Dark Modern Base) */
-            --bg-gradient: linear-gradient(135deg, #0b0f19 0%, #111827 50%, #1e1b4b 100%);
-            --card-bg: rgba(17, 24, 39, 0.75);
-            --card-border: rgba(255, 255, 255, 0.12);
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
+            /* Theme Background (White Base) */
+            --bg-gradient: #ffffff;
+            --card-bg: #f8fafc;
+            --card-border: #e2e8f0;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
             
-            /* Custom Color Palette Requested */
+            /* Custom Color Palette */
             --color-red: #ef4444;
             --color-red-hover: #dc2626;
-            --color-skyblue: #38bdf8;
-            --color-brown: #a16207;
-            --color-purple: #8b5cf6;
-            --color-purple-hover: #7c3aed;
+            --color-skyblue: #0284c7;
+            --color-brown: #92400e;
+            --color-purple: #7c3aed;
+            --color-purple-hover: #6d28d9;
             --success: #10b981;
         }
 
@@ -42,7 +42,7 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            background: rgba(11, 15, 25, 0.95);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(12px);
             border-top: 2px solid var(--color-purple);
             padding: 12px 20px;
@@ -50,7 +50,7 @@
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
-            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
             box-sizing: border-box;
         }
 
@@ -81,7 +81,7 @@
             font-weight: 700;
             font-size: 0.85rem;
             transition: opacity 0.3s, transform 0.2s;
-            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
             white-space: nowrap;
         }
 
@@ -92,14 +92,13 @@
 
         /* Interactive Reward Banner (Smartlink) */
         .interactive-reward-banner {
-            background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(56, 189, 248, 0.15));
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.08), rgba(2, 132, 199, 0.08));
             border: 2px dashed var(--color-purple);
             border-radius: 16px;
             padding: 20px;
             margin-bottom: 25px;
             text-align: center;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 8px 32px rgba(139, 92, 246, 0.25);
+            box-shadow: 0 8px 24px rgba(124, 58, 237, 0.08);
             position: relative;
             overflow: hidden;
             animation: borderPulse 3s infinite;
@@ -145,25 +144,24 @@
             border-radius: 8px;
             font-weight: 700;
             font-size: 0.95rem;
-            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+            box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
             transition: transform 0.2s, box-shadow 0.2s;
         }
 
         .interactive-claim-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(56, 189, 248, 0.5);
+            box-shadow: 0 6px 20px rgba(2, 132, 199, 0.35);
         }
 
-        /* Advertica Sidebar Container (Brown Highlight Accent) */
+        /* Advertica Sidebar Container */
         .advertica-sidebar-box {
             background: var(--card-bg);
             border: 2px solid var(--color-brown);
             border-radius: 16px;
             padding: 15px 10px;
             margin-bottom: 20px;
-            backdrop-filter: blur(10px);
             text-align: center;
-            box-shadow: 0 4px 20px rgba(161, 98, 7, 0.2);
+            box-shadow: 0 4px 15px rgba(146, 64, 14, 0.08);
             position: relative;
             transition: border-color 0.3s, transform 0.3s;
         }
@@ -175,7 +173,7 @@
 
         .advertica-badge {
             font-size: 0.75rem;
-            color: #d97706; /* Light Brown / Amber */
+            color: var(--color-brown);
             margin-bottom: 10px;
             letter-spacing: 0.5px;
             text-transform: uppercase;
@@ -186,8 +184,8 @@
             text-align: center;
             padding: 45px 20px;
             border-bottom: 1px solid var(--card-border);
-            background: rgba(11, 15, 25, 0.85);
-            backdrop-filter: blur(12px);
+            background: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
         }
 
         header h1 {
@@ -204,7 +202,7 @@
             margin: 10px 0 0;
             color: var(--color-skyblue);
             font-size: 1.15rem;
-            font-weight: 500;
+            font-weight: 600;
         }
 
         .container {
@@ -220,8 +218,8 @@
         }
 
         .login-trigger-btn {
-            background: rgba(139, 92, 246, 0.15);
-            color: var(--color-skyblue);
+            background: rgba(124, 58, 237, 0.08);
+            color: var(--color-purple);
             border: 1px solid var(--color-purple);
             padding: 8px 18px;
             border-radius: 8px;
@@ -234,7 +232,7 @@
         .login-trigger-btn:hover {
             background: var(--color-purple);
             color: white;
-            box-shadow: 0 0 15px rgba(139, 92, 246, 0.4);
+            box-shadow: 0 0 15px rgba(124, 58, 237, 0.2);
         }
 
         .search-bar-container {
@@ -244,20 +242,20 @@
         .search-input {
             width: 100%;
             padding: 16px 22px;
-            background: var(--card-bg);
+            background: #ffffff;
             border: 2px solid var(--card-border);
             border-radius: 12px;
             color: var(--text-main);
             font-size: 1.05rem;
             outline: none;
-            backdrop-filter: blur(10px);
             box-sizing: border-box;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
             transition: border-color 0.3s, box-shadow 0.3s;
         }
 
         .search-input:focus {
             border-color: var(--color-skyblue);
-            box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+            box-shadow: 0 0 15px rgba(2, 132, 199, 0.15);
         }
 
         .main-layout {
@@ -284,7 +282,6 @@
             border-radius: 16px;
             padding: 20px;
             margin-bottom: 20px;
-            backdrop-filter: blur(10px);
             text-align: center;
         }
 
@@ -296,12 +293,11 @@
         }
 
         .admin-panel {
-            background: var(--card-bg);
+            background: #ffffff;
             border: 2px solid var(--color-purple);
-            backdrop-filter: blur(12px);
             padding: 25px;
             border-radius: 16px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
             margin-bottom: 30px;
             display: none;
             animation: fadeIn 0.4s ease;
@@ -336,13 +332,14 @@
             display: block;
             margin-bottom: 6px;
             font-size: 0.9rem;
-            color: var(--color-skyblue);
+            color: var(--color-purple);
+            font-weight: 600;
         }
 
         .form-group input, .form-group textarea {
             width: 100%;
             padding: 12px;
-            background: rgba(11, 15, 25, 0.8);
+            background: #f8fafc;
             border: 1px solid var(--card-border);
             border-radius: 8px;
             color: var(--text-main);
@@ -393,8 +390,7 @@
             padding: 20px;
             margin-bottom: 25px;
             text-align: center;
-            backdrop-filter: blur(8px);
-            box-shadow: 0 4px 20px rgba(161, 98, 7, 0.15);
+            box-shadow: 0 4px 15px rgba(146, 64, 14, 0.05);
         }
 
         .infeed-ad-box {
@@ -404,18 +400,16 @@
             padding: 20px;
             margin-bottom: 25px;
             text-align: center;
-            backdrop-filter: blur(8px);
         }
 
         .news-card {
-            background: var(--card-bg);
+            background: #ffffff;
             border: 1px solid var(--card-border);
-            border-left: 4px solid var(--color-skyblue);
-            backdrop-filter: blur(8px);
+            border-left: 5px solid var(--color-skyblue);
             padding: 25px;
             border-radius: 16px;
             margin-bottom: 22px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
             transition: transform 0.3s ease, border-color 0.3s, box-shadow 0.3s;
         }
 
@@ -423,7 +417,7 @@
             transform: translateY(-4px);
             border-color: var(--color-purple);
             border-left-color: var(--color-red);
-            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.25);
+            box-shadow: 0 8px 25px rgba(124, 58, 237, 0.12);
         }
 
         .news-card h3 {
@@ -444,16 +438,16 @@
         .news-date, .read-time {
             font-size: 0.8rem;
             color: var(--color-skyblue);
-            background: rgba(56, 189, 248, 0.1);
+            background: rgba(2, 132, 199, 0.08);
             padding: 4px 12px;
             border-radius: 20px;
-            border: 1px solid rgba(56, 189, 248, 0.2);
-            font-weight: 500;
+            border: 1px solid rgba(2, 132, 199, 0.2);
+            font-weight: 600;
         }
 
         .news-content {
             line-height: 1.75;
-            color: #cbd5e1;
+            color: #334155;
             white-space: pre-wrap;
             font-size: 1.05rem;
         }
@@ -466,9 +460,9 @@
         }
 
         .share-btn {
-            background: rgba(56, 189, 248, 0.15);
+            background: rgba(2, 132, 199, 0.08);
             color: var(--color-skyblue);
-            border: 1px solid rgba(56, 189, 248, 0.4);
+            border: 1px solid rgba(2, 132, 199, 0.3);
             padding: 8px 16px;
             font-size: 0.85rem;
             border-radius: 6px;
@@ -479,13 +473,13 @@
 
         .share-btn:hover {
             background: var(--color-skyblue);
-            color: #0b0f19;
+            color: white;
         }
 
         .delete-btn {
-            background: rgba(239, 68, 68, 0.15);
-            color: #fca5a5;
-            border: 1px solid rgba(239, 68, 68, 0.4);
+            background: rgba(239, 68, 68, 0.08);
+            color: var(--color-red);
+            border: 1px solid rgba(239, 68, 68, 0.3);
             padding: 8px 16px;
             font-size: 0.85rem;
             border-radius: 6px;
@@ -514,13 +508,12 @@
         }
 
         .toast {
-            background: rgba(11, 15, 25, 0.95);
+            background: #ffffff;
             border: 1px solid var(--card-border);
             color: var(--text-main);
             padding: 12px 20px;
             border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
-            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
             font-size: 0.9rem;
             animation: slideIn 0.3s ease, fadeOut 0.3s ease 2.7s;
             display: flex;
@@ -605,7 +598,7 @@
                 
                 <!-- AD 1: Banner Ad Box -->
                 <div class="first-banner-ad-box">
-                    <div style="font-size:0.8rem; color:#d97706; margin-bottom:8px; font-weight: 600;">SPONSORED ANNOUNCEMENT</div>
+                    <div style="font-size:0.8rem; color:var(--color-brown); margin-bottom:8px; font-weight: 700;">SPONSORED ANNOUNCEMENT</div>
                     <!-- BEGIN AADS AD UNIT 2454542 -->
                     <div id="frame" style="width: 100%;margin: auto;position: relative; z-index: 99998;">
                          <iframe data-aa='2454542' src='//acceptable.a-ads.com/2454542/?size=Adaptive'
