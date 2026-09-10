@@ -4,22 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chronicle 24/7 - Live Global News</title>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
         :root {
-            /* Premium Midnight Navy Palette */
             --bg-main: #0a0e17;
             --bg-card: #131b2e;
             --bg-card-hover: #182239;
             --card-border: #1e2d4a;
             --text-main: #f1f5f9;
             --text-muted: #94a3b8;
-            
-            /* Custom Accent Colors */
             --color-red: #ef4444;
             --color-skyblue: #38bdf8;
             --color-purple: #a855f7;
-            --color-purple-hover: #9333ea;
             --success: #10b981;
         }
 
@@ -50,7 +45,6 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             font-weight: 900;
-            letter-spacing: -0.5px;
         }
 
         header p {
@@ -80,7 +74,6 @@
             font-size: 1rem;
             outline: none;
             box-sizing: border-box;
-            transition: border-color 0.3s, box-shadow 0.3s;
         }
 
         .search-input:focus {
@@ -119,7 +112,6 @@
             margin-top: 0;
             font-size: 1.1rem;
             color: var(--color-purple);
-            margin-bottom: 10px;
         }
 
         .news-feed h2 {
@@ -130,7 +122,6 @@
             margin-top: 0;
         }
 
-        /* News Card Styling */
         .news-card {
             background: var(--bg-card);
             border: 1px solid var(--card-border);
@@ -140,7 +131,6 @@
             margin-bottom: 22px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
             transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
-            position: relative;
         }
 
         .news-card:hover {
@@ -200,7 +190,6 @@
             flex-wrap: wrap;
         }
 
-        /* SmartLink CTA Button Style */
         .smartlink-btn {
             background: linear-gradient(135deg, var(--color-purple), var(--color-skyblue));
             color: #ffffff;
@@ -214,12 +203,6 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            transition: opacity 0.2s, transform 0.2s;
-        }
-
-        .smartlink-btn:hover {
-            opacity: 0.9;
-            transform: scale(1.02);
         }
 
         .share-btn {
@@ -231,42 +214,10 @@
             border-radius: 8px;
             cursor: pointer;
             font-weight: 600;
-            transition: all 0.2s;
-        }
-
-        .share-btn:hover {
-            background: var(--color-skyblue);
-            color: #0a0e17;
-        }
-
-        #toastContainer {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 9999;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .toast {
-            background: var(--bg-card);
-            border: 1px solid var(--card-border);
-            color: var(--text-main);
-            padding: 12px 20px;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.4);
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            border-left: 4px solid var(--success);
         }
     </style>
 </head>
 <body>
-
-    <div id="toastContainer"></div>
 
     <header>
         <h1>Chronicle 24/7</h1>
@@ -274,19 +225,14 @@
     </header>
 
     <div class="container">
-
         <div class="search-bar-container">
-            <input type="text" id="searchInput" class="search-input" placeholder="🔍 Search live news headlines or categories..." oninput="filterNews()">
+            <input type="text" id="searchInput" class="search-input" placeholder="🔍 Search live news headlines..." oninput="filterNews()">
         </div>
 
         <div class="main-layout">
-            
             <div class="news-feed">
                 <h2>Live Trending Feed</h2>
-                
-                <div id="newsContainer">
-                    <!-- 20 Interactive News Cards inserted dynamically via JavaScript -->
-                </div>
+                <div id="newsContainer"></div>
             </div>
 
             <aside class="sidebar">
@@ -294,221 +240,37 @@
                     <h3>⚡ Live Updates</h3>
                     <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0;">Updated every few minutes with fresh breaking coverage worldwide.</p>
                 </div>
-                <div class="sidebar-widget">
-                    <h3>🔥 Popular Categories</h3>
-                    <p style="font-size: 0.85rem; color: var(--color-skyblue);">Tech • AI • Markets • Science • Sports • Entertainment</p>
-                </div>
             </aside>
-
         </div>
-
     </div>
 
     <script>
-        // Data for 20 Interactive News Containers with Smartlink Placeholder
         const articles = [
-            {
-                id: 1,
-                tag: "Tech & AI",
-                title: "Next-Gen Quantum AI Chip Breakthrough Announced by Tech Giants",
-                time: "10 mins ago",
-                read: "2 min read",
-                content: "Engineers have successfully demonstrated a scalable quantum computing architecture capable of running real-time neural network calculations with zero latency.",
-                smartlink: "YOUR_SMARTLINK_HERE"
-            },
-            {
-                id: 2,
-                tag: "Crypto & Markets",
-                title: "Bitcoin Surges Past Key Resistance Level as Institutional Inflow Hits Record High",
-                time: "25 mins ago",
-                read: "3 min read",
-                content: "Global digital asset markets saw an explosive surge following new ETF approval updates and renewed confidence from European commercial banks.",
-                smartlink: "YOUR_SMARTLINK_HERE"
-            },
-            {
-                id: 3,
-                tag: "Space Exploration",
-                title: "NASA Spacecraft Captures High-Definition Images of Distant Exoplanet System",
-                time: "40 mins ago",
-                read: "4 min read",
-                content: "Deep space observation telemetry returned unbelievable clarity regarding potential atmospheric water vapor levels in neighboring solar star systems.",
-                smartlink: "YOUR_SMARTLINK_HERE"
-            },
-            {
-                id: 4,
-                tag: "Global Economy",
-                title: "Central Banks Announce Synchronized Interest Rate Adjustments for Q4",
-                time: "1 hour ago",
-                read: "3 min read",
-                content: "Policy makers across North America and Europe released coordinated statements outlining measures to stabilize inflation while promoting sustainable job growth.",
-                smartlink: "YOUR_SMARTLINK_HERE"
-            },
-            {
-                id: 5,
-                tag: "Automotive & EV",
-                title: "Revolutionary Solid-State Battery Promises 1,000 KM EV Range on 10-Minute Charge",
-                time: "1.5 hours ago",
-                read: "2 min read",
-                content: "Automotive researchers revealed commercial production timelines for high-density solid state batteries expected to revolutionize long-distance electric mobility.",
-                smartlink: "YOUR_SMARTLINK_HERE"
-            },
-            {
-                id: 6,
-                tag: "Cybersecurity",
-                title: "Critical Zero-Day Vulnerability Discovered Affecting Millions of IoT Devices",
-                time: "2 hours ago",
-                read: "3 min read",
-                content: "Security researchers urge immediate firmware updates for connected smart home hubs after discovering an unpatched vulnerability exploited by rogue actors.",
-                smartlink: "YOUR_SMARTLINK_HERE"
-            },
-            {
-                id: 7,
-                tag: "Health & Biotech",
-                title: "Gene Therapy Clinical Trial Successfully Reverses Inherited Vision Loss",
-                time: "2.5 hours ago",
-                read: "4 min read",
-                content: "Medical science hits a crucial milestone after target patient trials demonstrated sustained sensory restoration without significant side effects.",
-                smartlink: "YOUR_SMARTLINK_HERE"
-            },
-            {
-                id: 8,
-                tag: "Clean Energy",
-                title: "World's Largest Offshore Floating Solar Farm Starts Generating Power",
-                time: "3 hours ago",
-                read: "2 min read",
-                content: "Designed to withstand category 5 hurricanes, the massive renewable grid installation is set to supply clean electricity to over 500,000 coastal households.",
-                smartlink: "YOUR_SMARTLINK_HERE"
-            },
-            {
-                id: 9,
-                tag: "E-Sports & Gaming",
-                title: "Global E-Sports Championship Draws Record-Breaking 100 Million Concurrent Viewers",
-                time: "3.5 hours ago",
-                read: "2 min read",
-                content: "Competitive gaming solidifies its place as mainstream entertainment following unprecedented viewership metrics recorded across global streaming channels.",
-                smartlink: "YOUR_SMARTLINK_HERE"
-            },
-            {
-                id: 10,
-                tag: "Gadgets & Hardware",
-                title: "Next-Gen Holographic Smart Glasses Aim to Replace Smartphones by 2028",
-                time: "4 hours ago",
-                read: "3 min read",
-                content: "Lightweight spatial computing glasses with integrated conversational voice assistants aim to shift user habits away from traditional screen-based hardware.",
-                smartlink: "YOUR_SMARTLINK_HERE"
-            },
-            {
-                id: 11,
-                tag: "Mobile Tech",
-                title: "Major Smartphone Brand Launches Dual-Folding Screen Device Worldwide",
-                time: "4.5 hours ago",
-                read: "2 min read",
-                content: "Featuring a tri-fold design that expands from a standard mobile form factor into a full-sized 10-inch OLED tablet, pre-orders surpassed expectation.",
-                smartlink: "YOUR_SMARTLINK_HERE"
-            },
-            {
-                id: 12,
-                tag: "Artificial Intelligence",
-                title: "Autonomous AI Agents Complete First Multi-Agent Software Development Cycle",
-                time: "5 hours ago",
-                read: "4 min read",
-                content: "Software engineering protocols reach new speed milestones as cooperative agent frameworks successfully build, test, and deploy complex cloud applications.",
-                smartlink: "YOUR_SMARTLINK_HERE"
-            },
-            {
-                id: 13,
-                tag: "Aviation & Defense",
-                title: "Commercial Supersonic Jet Completes First Zero-Emission Test Flight",
-                time: "5.5 hours ago",
-                read: "3 min read",
-                content: "Halving flight durations over oceanic routes, the eco-friendly sustainable aviation fuel powertrain successfully completed high-altitude Mach 1.8 trials.",
-                smartlink: "YOUR_SMARTLINK_HERE"
-            },
-            {
-                id: 14,
-                tag: "Entertainment",
-                title: "Streaming Giant Signs Record $2 Billion Multi-Year Blockbuster Production Deal",
-                time: "6 hours ago",
-                read: "2 min read",
-                content: "Content creation moves into high gear as top studios join forces to produce exclusive interactive cinematic experiences using real-time rendering engines.",
-                smartlink: "YOUR_SMARTLINK_HERE"
-            },
-            {
-                id: 15,
-                tag: "Climate Science",
-                title: "New Atmospheric Carbon Capture Plant Begins Full Operations in Iceland",
-                time: "6.5 hours ago",
-                read: "3 min read",
-                content: "Utilizing deep underground basalt mineralization, the facility removes thousands of metric tons of CO2 directly from ambient air every single month.",
-                smartlink: "YOUR_SMARTLINK_HERE"
-            },
-            {
-                id: 16,
-                tag: "Fintech",
-                title: "Cross-Border Instant Digital Payment Rail Connects 15 Major Asian Countries",
-                time: "7 hours ago",
-                read: "2 min read",
-                content: "Tourists and merchants can now transact seamlessly across borders using QR code settlements with zero conversion markup fees.",
-                smartlink: "YOUR_SMARTLINK_HERE"
-            },
-            {
-                id: 17,
-                tag: "Robotics",
-                title: "Humanoid Robots Deployed in Logistics Facilities to Handle Peak Demand",
-                time: "7.5 hours ago",
-                read: "3 min read",
-                content: "Equipped with advanced tactile feedback sensors, bipedal robotic fleets assist human workers in safely sorting, packing, and dispatching cargo.",
-                smartlink: "YOUR_SMARTLINK_HERE"
-            },
-            {
-                id: 18,
-                tag: "E-Commerce",
-                title: "Same-Day Drone Delivery Service Expands Coverage to 50 New Metropolitan Cities",
-                time: "8 hours ago",
-                read: "2 min read",
-                content: "Autonomous aerial parcel drops under 15 minutes become everyday reality for suburban households ordering essential groceries and pharmaceuticals.",
-                smartlink: "YOUR_SMARTLINK_HERE"
-            },
-            {
-                id: 19,
-                tag: "Neuroscience",
-                title: "Non-Invasive Brain-Computer Interface Allows Typing Speed of 80 Words Per Minute",
-                time: "8.5 hours ago",
-                read: "4 min read",
-                content: "A sleek wearable headband reading subtle neural signals empowers paralyzed individuals to communicate seamlessly with digital screens in real time.",
-                smartlink: "YOUR_SMARTLINK_HERE"
-            },
-            {
-                id: 20,
-                tag: "Web Developments",
-                title: "Next Generation Web Framework Standard Speeds Up Internet Browsing By 300%",
-                time: "9 hours ago",
-                read: "2 min read",
-                content: "Browsers globally implement lightweight engine protocols reducing RAM footprint drastically while increasing rendering speeds on mobile and desktop devices.",
-                smartlink: "YOUR_SMARTLINK_HERE"
-            }
+            { id: 1, tag: "Tech & AI", title: "Next-Gen Quantum AI Chip Breakthrough Announced", time: "10 mins ago", read: "2 min read", content: "Engineers have successfully demonstrated a scalable quantum computing architecture.", smartlink: "#" },
+            { id: 2, tag: "Crypto", title: "Bitcoin Surges Past Key Resistance Level", time: "25 mins ago", read: "3 min read", content: "Global digital asset markets saw an explosive surge following new ETF updates.", smartlink: "#" },
+            { id: 3, tag: "Space", title: "NASA Captures High-Definition Images of Distant Planet", time: "40 mins ago", read: "4 min read", content: "Deep space observation telemetry returned unbelievable clarity of distant systems.", smartlink: "#" },
+            { id: 4, tag: "Economy", title: "Central Banks Adjust Interest Rates Globally", time: "1 hour ago", read: "3 min read", content: "Policy makers released statements outlining measures to stabilize inflation.", smartlink: "#" },
+            { id: 5, tag: "EV Tech", title: "Solid-State Battery Promises 1,000 KM EV Range", time: "1.5 hours ago", read: "2 min read", content: "Researchers revealed production timelines for high-density solid state batteries.", smartlink: "#" },
+            { id: 6, tag: "Cybersecurity", title: "Zero-Day Vulnerability Discovered in IoT Devices", time: "2 hours ago", read: "3 min read", content: "Security researchers urge immediate firmware updates for connected smart home hubs.", smartlink: "#" },
+            { id: 7, tag: "Health", title: "Gene Therapy Trial Reverses Inherited Vision Loss", time: "2.5 hours ago", read: "4 min read", content: "Medical science hits a crucial milestone after target patient trials succeeded.", smartlink: "#" },
+            { id: 8, tag: "Clean Energy", title: "World's Largest Floating Solar Farm Starts Generating Power", time: "3 hours ago", read: "2 min read", content: "Designed to withstand severe weather, the installation supplies clean electricity.", smartlink: "#" },
+            { id: 9, tag: "Gaming", title: "Global E-Sports Event Draws 100 Million Viewers", time: "3.5 hours ago", read: "2 min read", content: "Competitive gaming solidifies its place as mainstream global entertainment.", smartlink: "#" },
+            { id: 10, tag: "Hardware", title: "Holographic Smart Glasses Aim to Replace Phones", time: "4 hours ago", read: "3 min read", content: "Lightweight spatial computing glasses shift user habits away from traditional screens.", smartlink: "#" },
+            { id: 11, tag: "Mobile", title: "Dual-Folding Screen Device Launched Worldwide", time: "4.5 hours ago", read: "2 min read", content: "Featuring a tri-fold design expanding into a 10-inch OLED tablet.", smartlink: "#" },
+            { id: 12, tag: "AI", title: "Autonomous AI Agents Complete First Software Cycle", time: "5 hours ago", read: "4 min read", content: "Software engineering protocols reach new speed milestones with agent frameworks.", smartlink: "#" },
+            { id: 13, tag: "Aviation", title: "Commercial Supersonic Jet Completes Test Flight", time: "5.5 hours ago", read: "3 min read", content: "Halving flight durations over oceanic routes using sustainable fuel.", smartlink: "#" },
+            { id: 14, tag: "Entertainment", title: "Streaming Giant Signs Record $2 Billion Studio Deal", time: "6 hours ago", read: "2 min read", content: "Content creation moves into high gear with interactive cinematic experiences.", smartlink: "#" },
+            { id: 15, tag: "Climate", title: "New Direct Air Carbon Capture Plant Opens", time: "6.5 hours ago", read: "3 min read", content: "Utilizing deep underground basalt mineralization to absorb ambient CO2.", smartlink: "#" },
+            { id: 16, tag: "Fintech", title: "Cross-Border Instant Digital Payment Rail Launched", time: "7 hours ago", read: "2 min read", content: "Merchants can now transact seamlessly across borders using instant QR code settlements.", smartlink: "#" },
+            { id: 17, tag: "Robotics", title: "Humanoid Robots Deployed in Logistics Hubs", time: "7.5 hours ago", read: "3 min read", content: "Tactile feedback sensors allow bipedal robots to handle parcel sorting.", smartlink: "#" },
+            { id: 18, tag: "E-Commerce", title: "Drone Delivery Coverage Expands to 50 New Cities", time: "8 hours ago", read: "2 min read", content: "Suburban households receive essential goods via rapid drone drops.", smartlink: "#" },
+            { id: 19, tag: "Neurotech", title: "Brain Interface Allows Typing 80 Words Per Minute", time: "8.5 hours ago", read: "4 min read", content: "Sensors read neural signals empowering individuals to control screens seamlessly.", smartlink: "#" },
+            { id: 20, tag: "Web Tech", title: "New Web Engine Standard Speeds Up Browsing By 300%", time: "9 hours ago", read: "2 min read", content: "Lightweight engine protocols reduce RAM usage while boosting rendering speeds.", smartlink: "#" }
         ];
-
-        let currentArticles = [...articles];
-
-        function showToast(message) {
-            const container = document.getElementById('toastContainer');
-            const toast = document.createElement('div');
-            toast.className = 'toast';
-            toast.innerHTML = `<span>✅</span> ${message}`;
-            container.appendChild(toast);
-            setTimeout(() => toast.remove(), 3000);
-        }
 
         function renderArticles(data) {
             const container = document.getElementById('newsContainer');
             container.innerHTML = '';
-
-            if (data.length === 0) {
-                container.innerHTML = '<div style="text-align:center; color:var(--text-muted); padding:40px;">No articles found matching your search.</div>';
-                return;
-            }
-
             data.forEach(article => {
                 const card = document.createElement('div');
                 card.className = 'news-card';
@@ -522,10 +284,9 @@
                     <div class="news-content">${article.content}</div>
                     <div class="card-actions">
                         <a href="${article.smartlink}" target="_blank" class="smartlink-btn">
-                            <span>🔥 Read Full Story</span>
-                            <span>➔</span>
+                            <span>🔥 Read Full Story</span> ➔
                         </a>
-                        <button class="share-btn" onclick="shareArticle('${article.title.replace(/'/g, "\\'")}')">🔗 Share</button>
+                        <button class="share-btn" onclick="alert('Link Copied!')">🔗 Share</button>
                     </div>
                 `;
                 container.appendChild(card);
@@ -536,21 +297,15 @@
             const query = document.getElementById('searchInput').value.toLowerCase();
             const filtered = articles.filter(item => 
                 item.title.toLowerCase().includes(query) || 
-                item.content.toLowerCase().includes(query) ||
                 item.tag.toLowerCase().includes(query)
             );
             renderArticles(filtered);
         }
 
-        function shareArticle(title) {
-            if (navigator.clipboard) {
-                navigator.clipboard.writeText(window.location.href);
-                showToast(`Link copied for article!`);
-            }
-        }
-
-        // Initial Load
-        renderArticles(articles);
+        // Automatic execution on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            renderArticles(articles);
+        });
     </script>
 </body>
 </html>
