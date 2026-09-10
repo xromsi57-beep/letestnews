@@ -54,20 +54,20 @@
         }
 
         .container {
-            max-width: 1250px;
+            max-width: 1200px;
             margin: 25px auto;
             padding: 0 20px;
         }
 
-        /* 2 Column Grid Layout */
+        /* 2 Column Main Layout */
         .main-layout {
             display: grid;
-            grid-template-columns: 1fr 380px;
+            grid-template-columns: 1fr 360px;
             gap: 25px;
             align-items: start;
         }
 
-        @media (max-width: 950px) {
+        @media (max-width: 900px) {
             .main-layout {
                 grid-template-columns: 1fr;
             }
@@ -81,7 +81,7 @@
             margin-top: 0;
         }
 
-        /* Left Side: Main News Card Styling */
+        /* Left Side Main News Styling */
         .main-news-card {
             background: var(--bg-card);
             border: 1px solid var(--card-border);
@@ -104,21 +104,59 @@
             margin: 15px 0;
         }
 
-        /* Right Side: 20 Small Interactive Boxes */
-        .side-boxes-container {
+        .news-tag {
+            font-size: 0.75rem;
+            color: #ffffff;
+            background: var(--color-purple);
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-weight: 700;
+        }
+
+        .news-date {
+            font-size: 0.78rem;
+            color: var(--color-skyblue);
+            margin-left: 10px;
+        }
+
+        /* Right Side Sidebar Styling */
+        .sidebar {
+            position: sticky;
+            top: 20px;
+        }
+
+        /* Top Live Updates Widget */
+        .sidebar-widget {
+            background: var(--bg-card);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 18px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .sidebar-widget h3 {
+            margin-top: 0;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+            color: var(--color-purple);
+        }
+
+        /* Container for 20 boxes under Live Updates */
+        .sidebar-boxes-list {
             display: flex;
             flex-direction: column;
             gap: 12px;
-            max-height: 85vh;
+            max-height: 75vh;
             overflow-y: auto;
             padding-right: 5px;
         }
 
-        /* Scrollbar styling for side boxes */
-        .side-boxes-container::-webkit-scrollbar {
+        .sidebar-boxes-list::-webkit-scrollbar {
             width: 5px;
         }
-        .side-boxes-container::-webkit-scrollbar-thumb {
+        
+        .sidebar-boxes-list::-webkit-scrollbar-thumb {
             background: var(--card-border);
             border-radius: 10px;
         }
@@ -127,8 +165,8 @@
             background: var(--bg-card);
             border: 1px solid var(--card-border);
             border-left: 3px solid var(--color-purple);
-            border-radius: 10px;
-            padding: 12px 15px;
+            border-radius: 12px;
+            padding: 12px 14px;
             transition: all 0.2s ease;
         }
 
@@ -161,7 +199,7 @@
             font-weight: 600;
             color: var(--text-main);
             margin: 0 0 10px 0;
-            line-height: 1.3;
+            line-height: 1.35;
         }
 
         .smartlink-btn {
@@ -172,7 +210,7 @@
             color: #ffffff;
             font-size: 0.78rem;
             font-weight: 700;
-            padding: 6px 0;
+            padding: 7px 0;
             border-radius: 6px;
             text-decoration: none;
             box-sizing: border-box;
@@ -182,34 +220,19 @@
         .smartlink-btn:hover {
             opacity: 0.9;
         }
-
-        .news-tag {
-            font-size: 0.75rem;
-            color: #ffffff;
-            background: var(--color-purple);
-            padding: 3px 10px;
-            border-radius: 20px;
-            font-weight: 700;
-        }
-
-        .news-date {
-            font-size: 0.78rem;
-            color: var(--color-skyblue);
-            margin-left: 10px;
-        }
     </style>
 </head>
 <body>
 
     <header>
         <h1>Chronicle 24/7</h1>
-        <p>Live News Feed & Trending Updates</p>
+        <p>Live Interactive Global News Stream</p>
     </header>
 
     <div class="container">
         <div class="main-layout">
             
-            <!-- Left Side: Main News Stream -->
+            <!-- Left Side Main News Content -->
             <div class="main-news-section">
                 <h2 class="section-title">📰 Main News Feed</h2>
                 
@@ -218,7 +241,7 @@
                         <span class="news-tag">BREAKING</span>
                         <span class="news-date">📅 Just Now</span>
                     </div>
-                    <h3>Global Tech Summit Announces Next Breakthrough in Artificial Intelligence</h3>
+                    <h3>Global Tech Summit Announces Breakthrough in Artificial Intelligence</h3>
                     <p class="news-content">
                         Industry leaders have unveiled breakthrough developments in quantum neural networks, allowing real-time processing capabilities for complex automated systems worldwide.
                     </p>
@@ -231,25 +254,32 @@
                     </div>
                     <h3>International Trade Agreements Reach New Historic Accord</h3>
                     <p class="news-content">
-                        Key economic allies have finalized new digital commerce frameworks aiming to boost cross-border startup ecosystems and reduce export friction.
+                        Key economic allies have finalized new digital commerce frameworks aiming to boost cross-border startup ecosystems and reduce export friction globally.
                     </p>
                 </div>
             </div>
 
-            <!-- Right Side: 20 Smartlink Boxes -->
-            <aside class="sidebar-section">
-                <h2 class="section-title">🔥 Trending (20 Topics)</h2>
+            <!-- Right Sidebar -->
+            <aside class="sidebar">
                 
-                <div class="side-boxes-container" id="sideBoxesContainer">
-                    <!-- 20 Boxes will be injected here automatically -->
+                <!-- Live Updates Box -->
+                <div class="sidebar-widget">
+                    <h3>⚡ Live Updates</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Updated every few minutes with fresh breaking coverage worldwide.</p>
                 </div>
+
+                <!-- 20 Boxes stacked directly below Live Updates -->
+                <div class="sidebar-boxes-list" id="sidebarBoxesList">
+                    <!-- JavaScript will generate 20 boxes here -->
+                </div>
+
             </aside>
 
         </div>
     </div>
 
     <script>
-        // Data for 20 Right-Side Interactive Containers
+        // 20 Smartlink Boxes Data
         const trendingItems = [
             { id: 1, tag: "AI Tech", title: "Quantum AI Chip Breakthrough", time: "10m ago", link: "YOUR_SMARTLINK_HERE" },
             { id: 2, tag: "Crypto", title: "Bitcoin Crosses Key Resistance", time: "20m ago", link: "YOUR_SMARTLINK_HERE" },
@@ -273,8 +303,8 @@
             { id: 20, tag: "Web 3.0", title: "Next-Gen Web Speed Engine Standard", time: "9h ago", link: "YOUR_SMARTLINK_HERE" }
         ];
 
-        function renderSideBoxes() {
-            const container = document.getElementById('sideBoxesContainer');
+        function renderSidebarBoxes() {
+            const container = document.getElementById('sidebarBoxesList');
             container.innerHTML = '';
 
             trendingItems.forEach(item => {
@@ -294,7 +324,7 @@
             });
         }
 
-        document.addEventListener('DOMContentLoaded', renderSideBoxes);
+        document.addEventListener('DOMContentLoaded', renderSidebarBoxes);
     </script>
 </body>
 </html>
