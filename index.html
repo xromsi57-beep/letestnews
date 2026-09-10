@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chronicle 24/7 - Live News & 50 Dynamic Widgets</title>
+    <title> NNEWS-24/7 - Live News </title>
     <style>
         :root {
             --bg-main: #0a0e17;
@@ -161,7 +161,7 @@
             border-radius: 10px;
         }
 
-        /* Dynamic Box Variations (5 Different Styles) */
+        /* Dynamic Box Variations */
         .side-box {
             background: var(--bg-card);
             border: 1px solid var(--card-border);
@@ -318,47 +318,65 @@
     </div>
 
     <script>
-        // Data for 50 Trending Topics with 5 Visual Style Variations
-        const categories = ["AI Tech", "Crypto", "Markets", "Cybersecurity", "Space", "Gaming", "EV Tech", "Energy", "Robotics", "Health"];
-        const styles = ["box-style-1", "box-style-2", "box-style-3", "box-style-4", "box-style-5"];
-        const buttonTexts = ["🔥 View Story ➔", "⚡ Read Updates ➔", "🚀 Deep Dive ➔", "💥 Breaking News ➔", "📈 Check Trends ➔"];
-
-        const rawTitles = [
-            "Quantum AI Chip Breakthrough Announced", "Bitcoin Surges Past Key Resistance Level", "NASA Captures High-Definition Exoplanet",
-            "Central Banks Adjust Interest Rates Globally", "Solid-State Battery Promises 1000KM EV Range", "Zero-Day Vulnerability Discovered in IoT",
-            "Gene Therapy Trial Reverses Vision Loss", "World's Largest Floating Solar Farm Starts", "Global Esports Event Draws 100M Viewers",
-            "Holographic Smart Glasses Aim to Replace Phones", "Dual-Folding Screen Device Launched Globally", "Autonomous AI Agents Complete Software Cycle",
-            "Commercial Supersonic Jet Completes Test Flight", "Streaming Giant Signs Record $2B Studio Deal", "New Direct Air Carbon Capture Plant Opens",
-            "Cross-Border Instant Digital Payment Rail", "Humanoid Robots Deployed in Logistics Hubs", "Drone Delivery Coverage Expands to 50 Cities",
-            "Brain Interface Allows Typing 80 Words Per Min", "New Web Engine Standard Speeds Up Browsing", "Fusion Energy Reactor Sustains Plasma Output",
-            "Asteroid Mining Probe Transmits Resource Data", "Graphene Supercapacitors Enable 3-Min Charging", "Global Microchip Supply Chain Reaches Peak Output",
-            "Bioprinting Breakthrough Recreates Human Tissue", "6G Network Architecture Tests Reach 1 Terabit", "AI Medical Diagnostic Tool Receives FDA Approval",
-            "Offshore Wind Turbines Generate Record Output", "Decentralized Social Protocol Crosses 50M Users", "Quantum Encryption Key Deployed in Banking",
-            "Smart Agriculture Drones Boost Crop Yields 40%", "Spacecraft Propelled by Solar Sail Reaches Orbit", "Generative Video AI Models Create HD Movies",
-            "Next-Gen Lithium-Sulfur Batteries Enter Testing", "Global Renewable Energy Share Crosses 40%", "Virtual Reality Operating System Released",
-            "Autonomous Freight Trucks Clear Highway Testing", "Exoskeleton Suits Standardized for Factory Work", "Micro-Nuclear Reactors Approved for Rural Grids",
-            "Deep Ocean Exploration Discovers New Ecosystems", "Hyperloop Vacuum Track Test Reaches High Speed", "AI Cybersecurity Agent Defends Cloud Infrastructure",
-            "Synthetic Biology Startup Creates Biodegradable Plastic", "Smart City Traffic Mesh System Reduces Congestion", "Orbital Space Hotel Begins Accepting Reservations",
-            "Wearable Glucose Sensor Operates Without Needles", "Carbon-Negative Concrete Standardized Worldwide", "Superconducting Material Reaches Room Temp Milestone",
-            "3D-Printed Housing Complexes Completed in 48 Hours", "Next-Gen Subsea Fiber Cable Boosts Transatlantic Speeds"
+        // Data for 50 Trending Topics with Sequential Smartlink Placeholders
+        const rawItems = [
+            { tag: "AI Tech", style: "box-style-1", btnText: "🔥 View Story ➔", title: "Quantum AI Chip Breakthrough Announced", time: "12m ago", link: "paste smartlink 1 here" },
+            { tag: "Crypto", style: "box-style-2", btnText: "⚡ Read Updates ➔", title: "Bitcoin Surges Past Key Resistance Level", time: "24m ago", link: "paste smartlink 2 here" },
+            { tag: "Markets", style: "box-style-3", btnText: "🚀 Deep Dive ➔", title: "NASA Captures High-Definition Exoplanet", time: "36m ago", link: "paste smartlink 3 here" },
+            { tag: "Cybersecurity", style: "box-style-4", btnText: "💥 Breaking News ➔", title: "Central Banks Adjust Interest Rates Globally", time: "48m ago", link: "paste smartlink 4 here" },
+            { tag: "Space", style: "box-style-5", btnText: "📈 Check Trends ➔", title: "Solid-State Battery Promises 1000KM EV Range", time: "1h ago", link: "paste smartlink 5 here" },
+            { tag: "Gaming", style: "box-style-1", btnText: "🔥 View Story ➔", title: "Zero-Day Vulnerability Discovered in IoT", time: "1.2h ago", link: "paste smartlink 6 here" },
+            { tag: "EV Tech", style: "box-style-2", btnText: "⚡ Read Updates ➔", title: "Gene Therapy Trial Reverses Vision Loss", time: "1.4h ago", link: "paste smartlink 7 here" },
+            { tag: "Energy", style: "box-style-3", btnText: "🚀 Deep Dive ➔", title: "World's Largest Floating Solar Farm Starts", time: "1.6h ago", link: "paste smartlink 8 here" },
+            { tag: "Robotics", style: "box-style-4", btnText: "💥 Breaking News ➔", title: "Global Esports Event Draws 100M Viewers", time: "1.8h ago", link: "paste smartlink 9 here" },
+            { tag: "Health", style: "box-style-5", btnText: "📈 Check Trends ➔", title: "Holographic Smart Glasses Aim to Replace Phones", time: "2h ago", link: "paste smartlink 10 here" },
+            { tag: "AI Tech", style: "box-style-1", btnText: "🔥 View Story ➔", title: "Dual-Folding Screen Device Launched Globally", time: "2.2h ago", link: "paste smartlink 11 here" },
+            { tag: "Crypto", style: "box-style-2", btnText: "⚡ Read Updates ➔", title: "Autonomous AI Agents Complete Software Cycle", time: "2.4h ago", link: "paste smartlink 12 here" },
+            { tag: "Markets", style: "box-style-3", btnText: "🚀 Deep Dive ➔", title: "Commercial Supersonic Jet Completes Test Flight", time: "2.6h ago", link: "paste smartlink 13 here" },
+            { tag: "Cybersecurity", style: "box-style-4", btnText: "💥 Breaking News ➔", title: "Streaming Giant Signs Record $2B Studio Deal", time: "2.8h ago", link: "paste smartlink 14 here" },
+            { tag: "Space", style: "box-style-5", btnText: "📈 Check Trends ➔", title: "New Direct Air Carbon Capture Plant Opens", time: "3h ago", link: "paste smartlink 15 here" },
+            { tag: "Gaming", style: "box-style-1", btnText: "🔥 View Story ➔", title: "Cross-Border Instant Digital Payment Rail", time: "3.2h ago", link: "paste smartlink 16 here" },
+            { tag: "EV Tech", style: "box-style-2", btnText: "⚡ Read Updates ➔", title: "Humanoid Robots Deployed in Logistics Hubs", time: "3.4h ago", link: "paste smartlink 17 here" },
+            { tag: "Energy", style: "box-style-3", btnText: "🚀 Deep Dive ➔", title: "Drone Delivery Coverage Expands to 50 Cities", time: "3.6h ago", link: "paste smartlink 18 here" },
+            { tag: "Robotics", style: "box-style-4", btnText: "💥 Breaking News ➔", title: "Brain Interface Allows Typing 80 Words Per Min", time: "3.8h ago", link: "paste smartlink 19 here" },
+            { tag: "Health", style: "box-style-5", btnText: "📈 Check Trends ➔", title: "New Web Engine Standard Speeds Up Browsing", time: "4h ago", link: "paste smartlink 20 here" },
+            { tag: "AI Tech", style: "box-style-1", btnText: "🔥 View Story ➔", title: "Fusion Energy Reactor Sustains Plasma Output", time: "4.2h ago", link: "paste smartlink 21 here" },
+            { tag: "Crypto", style: "box-style-2", btnText: "⚡ Read Updates ➔", title: "Asteroid Mining Probe Transmits Resource Data", time: "4.4h ago", link: "paste smartlink 22 here" },
+            { tag: "Markets", style: "box-style-3", btnText: "🚀 Deep Dive ➔", title: "Graphene Supercapacitors Enable 3-Min Charging", time: "4.6h ago", link: "paste smartlink 23 here" },
+            { tag: "Cybersecurity", style: "box-style-4", btnText: "💥 Breaking News ➔", title: "Global Microchip Supply Chain Reaches Peak Output", time: "4.8h ago", link: "paste smartlink 24 here" },
+            { tag: "Space", style: "box-style-5", btnText: "📈 Check Trends ➔", title: "Bioprinting Breakthrough Recreates Human Tissue", time: "5h ago", link: "paste smartlink 25 here" },
+            { tag: "Gaming", style: "box-style-1", btnText: "🔥 View Story ➔", title: "6G Network Architecture Tests Reach 1 Terabit", time: "5.2h ago", link: "paste smartlink 26 here" },
+            { tag: "EV Tech", style: "box-style-2", btnText: "⚡ Read Updates ➔", title: "AI Medical Diagnostic Tool Receives FDA Approval", time: "5.4h ago", link: "paste smartlink 27 here" },
+            { tag: "Energy", style: "box-style-3", btnText: "🚀 Deep Dive ➔", title: "Offshore Wind Turbines Generate Record Output", time: "5.6h ago", link: "paste smartlink 28 here" },
+            { tag: "Robotics", style: "box-style-4", btnText: "💥 Breaking News ➔", title: "Decentralized Social Protocol Crosses 50M Users", time: "5.8h ago", link: "paste smartlink 29 here" },
+            { tag: "Health", style: "box-style-5", btnText: "📈 Check Trends ➔", title: "Quantum Encryption Key Deployed in Banking", time: "6h ago", link: "paste smartlink 30 here" },
+            { tag: "AI Tech", style: "box-style-1", btnText: "🔥 View Story ➔", title: "Smart Agriculture Drones Boost Crop Yields 40%", time: "6.2h ago", link: "paste smartlink 31 here" },
+            { tag: "Crypto", style: "box-style-2", btnText: "⚡ Read Updates ➔", title: "Spacecraft Propelled by Solar Sail Reaches Orbit", time: "6.4h ago", link: "paste smartlink 32 here" },
+            { tag: "Markets", style: "box-style-3", btnText: "🚀 Deep Dive ➔", title: "Generative Video AI Models Create HD Movies", time: "6.6h ago", link: "paste smartlink 33 here" },
+            { tag: "Cybersecurity", style: "box-style-4", btnText: "💥 Breaking News ➔", title: "Next-Gen Lithium-Sulfur Batteries Enter Testing", time: "6.8h ago", link: "paste smartlink 34 here" },
+            { tag: "Space", style: "box-style-5", btnText: "📈 Check Trends ➔", title: "Global Renewable Energy Share Crosses 40%", time: "7h ago", link: "paste smartlink 35 here" },
+            { tag: "Gaming", style: "box-style-1", btnText: "🔥 View Story ➔", title: "Virtual Reality Operating System Released", time: "7.2h ago", link: "paste smartlink 36 here" },
+            { tag: "EV Tech", style: "box-style-2", btnText: "⚡ Read Updates ➔", title: "Autonomous Freight Trucks Clear Highway Testing", time: "7.4h ago", link: "paste smartlink 37 here" },
+            { tag: "Energy", style: "box-style-3", btnText: "🚀 Deep Dive ➔", title: "Exoskeleton Suits Standardized for Factory Work", time: "7.6h ago", link: "paste smartlink 38 here" },
+            { tag: "Robotics", style: "box-style-4", btnText: "💥 Breaking News ➔", title: "Micro-Nuclear Reactors Approved for Rural Grids", time: "7.8h ago", link: "paste smartlink 39 here" },
+            { tag: "Health", style: "box-style-5", btnText: "📈 Check Trends ➔", title: "Deep Ocean Exploration Discovers New Ecosystems", time: "8h ago", link: "paste smartlink 40 here" },
+            { tag: "AI Tech", style: "box-style-1", btnText: "🔥 View Story ➔", title: "Hyperloop Vacuum Track Test Reaches High Speed", time: "8.2h ago", link: "paste smartlink 41 here" },
+            { tag: "Crypto", style: "box-style-2", btnText: "⚡ Read Updates ➔", title: "AI Cybersecurity Agent Defends Cloud Infrastructure", time: "8.4h ago", link: "paste smartlink 42 here" },
+            { tag: "Markets", style: "box-style-3", btnText: "🚀 Deep Dive ➔", title: "Synthetic Biology Startup Creates Biodegradable Plastic", time: "8.6h ago", link: "paste smartlink 43 here" },
+            { tag: "Cybersecurity", style: "box-style-4", btnText: "💥 Breaking News ➔", title: "Smart City Traffic Mesh System Reduces Congestion", time: "8.8h ago", link: "paste smartlink 44 here" },
+            { tag: "Space", style: "box-style-5", btnText: "📈 Check Trends ➔", title: "Orbital Space Hotel Begins Accepting Reservations", time: "9h ago", link: "paste smartlink 45 here" },
+            { tag: "Gaming", style: "box-style-1", btnText: "🔥 View Story ➔", title: "Wearable Glucose Sensor Operates Without Needles", time: "9.2h ago", link: "paste smartlink 46 here" },
+            { tag: "EV Tech", style: "box-style-2", btnText: "⚡ Read Updates ➔", title: "Carbon-Negative Concrete Standardized Worldwide", time: "9.4h ago", link: "paste smartlink 47 here" },
+            { tag: "Energy", style: "box-style-3", btnText: "🚀 Deep Dive ➔", title: "Superconducting Material Reaches Room Temp Milestone", time: "9.6h ago", link: "paste smartlink 48 here" },
+            { tag: "Robotics", style: "box-style-4", btnText: "💥 Breaking News ➔", title: "3D-Printed Housing Complexes Completed in 48 Hours", time: "9.8h ago", link: "paste smartlink 49 here" },
+            { tag: "Health", style: "box-style-5", btnText: "📈 Check Trends ➔", title: "Next-Gen Subsea Fiber Cable Boosts Transatlantic Speeds", time: "10h ago", link: "paste smartlink 50 here" }
         ];
-
-        // Generate Array of 50 Unique Items
-        const trendingItems = rawTitles.map((title, index) => ({
-            id: index + 1,
-            tag: categories[index % categories.length],
-            style: styles[index % styles.length],
-            btnText: buttonTexts[index % buttonTexts.length],
-            title: title,
-            time: `${(index + 1) * 12}m ago`,
-            link: "YOUR_SMARTLINK_HERE"
-        }));
 
         function renderSidebarBoxes() {
             const container = document.getElementById('sidebarBoxesList');
             container.innerHTML = '';
 
-            trendingItems.forEach(item => {
+            rawItems.forEach(item => {
                 const box = document.createElement('div');
                 box.className = `side-box ${item.style}`;
                 box.innerHTML = `
