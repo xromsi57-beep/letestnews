@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chronicle 24/7 - Live Global News</title>
+    <title>Chronicle 24/7 - Live News & 50 Dynamic Widgets</title>
     <style>
         :root {
             --bg-main: #0a0e17;
@@ -15,7 +15,8 @@
             --color-red: #ef4444;
             --color-skyblue: #38bdf8;
             --color-purple: #a855f7;
-            --success: #10b981;
+            --color-amber: #f59e0b;
+            --color-green: #10b981;
         }
 
         body {
@@ -54,7 +55,7 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1250px;
             margin: 25px auto;
             padding: 0 20px;
         }
@@ -62,7 +63,7 @@
         /* 2 Column Main Layout */
         .main-layout {
             display: grid;
-            grid-template-columns: 1fr 360px;
+            grid-template-columns: 1fr 380px;
             gap: 25px;
             align-items: start;
         }
@@ -125,7 +126,6 @@
             top: 20px;
         }
 
-        /* Top Live Updates Widget */
         .sidebar-widget {
             background: var(--bg-card);
             border: 1px solid var(--card-border);
@@ -142,18 +142,18 @@
             color: var(--color-purple);
         }
 
-        /* Container for 20 boxes under Live Updates */
+        /* Container for 50 boxes under Live Updates */
         .sidebar-boxes-list {
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            max-height: 75vh;
+            gap: 14px;
+            max-height: 80vh;
             overflow-y: auto;
-            padding-right: 5px;
+            padding-right: 6px;
         }
 
         .sidebar-boxes-list::-webkit-scrollbar {
-            width: 5px;
+            width: 6px;
         }
         
         .sidebar-boxes-list::-webkit-scrollbar-thumb {
@@ -161,19 +161,59 @@
             border-radius: 10px;
         }
 
+        /* Dynamic Box Variations (5 Different Styles) */
         .side-box {
             background: var(--bg-card);
             border: 1px solid var(--card-border);
-            border-left: 3px solid var(--color-purple);
             border-radius: 12px;
-            padding: 12px 14px;
+            padding: 14px;
             transition: all 0.2s ease;
         }
 
         .side-box:hover {
             background: var(--bg-card-hover);
-            border-left-color: var(--color-skyblue);
             transform: translateX(3px);
+        }
+
+        /* Style Type 1: Purple Accent */
+        .box-style-1 {
+            border-left: 4px solid var(--color-purple);
+        }
+        .box-style-1 .smartlink-btn {
+            background: linear-gradient(135deg, var(--color-purple), var(--color-skyblue));
+        }
+
+        /* Style Type 2: Red Alert / Breaking */
+        .box-style-2 {
+            border-left: 4px solid var(--color-red);
+            background: rgba(239, 68, 68, 0.05);
+        }
+        .box-style-2 .smartlink-btn {
+            background: linear-gradient(135deg, var(--color-red), var(--color-amber));
+        }
+
+        /* Style Type 3: Green Success / Finance */
+        .box-style-3 {
+            border-left: 4px solid var(--color-green);
+        }
+        .box-style-3 .smartlink-btn {
+            background: linear-gradient(135deg, var(--color-green), var(--color-skyblue));
+        }
+
+        /* Style Type 4: Amber Warning / Tech */
+        .box-style-4 {
+            border-left: 4px solid var(--color-amber);
+        }
+        .box-style-4 .smartlink-btn {
+            background: linear-gradient(135deg, var(--color-amber), var(--color-purple));
+        }
+
+        /* Style Type 5: Skyblue Modern */
+        .box-style-5 {
+            border-left: 4px solid var(--color-skyblue);
+        }
+        .box-style-5 .smartlink-btn {
+            background: linear-gradient(135deg, var(--color-skyblue), var(--color-purple));
         }
 
         .box-header {
@@ -206,7 +246,6 @@
             display: inline-block;
             width: 100%;
             text-align: center;
-            background: linear-gradient(135deg, var(--color-purple), var(--color-skyblue));
             color: #ffffff;
             font-size: 0.78rem;
             font-weight: 700;
@@ -226,7 +265,7 @@
 
     <header>
         <h1>Chronicle 24/7</h1>
-        <p>Live Interactive Global News Stream</p>
+        <p>Live News Feed & 50 Dynamic Trending Updates</p>
     </header>
 
     <div class="container">
@@ -264,13 +303,13 @@
                 
                 <!-- Live Updates Box -->
                 <div class="sidebar-widget">
-                    <h3>⚡ Live Updates</h3>
-                    <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Updated every few minutes with fresh breaking coverage worldwide.</p>
+                    <h3>⚡ Live Updates (50 Topics)</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Scroll down to view all 50 trending news boxes.</p>
                 </div>
 
-                <!-- 20 Boxes stacked directly below Live Updates -->
+                <!-- 50 Dynamic Boxes directly below Live Updates -->
                 <div class="sidebar-boxes-list" id="sidebarBoxesList">
-                    <!-- JavaScript will generate 20 boxes here -->
+                    <!-- JavaScript will generate 50 boxes here -->
                 </div>
 
             </aside>
@@ -279,29 +318,41 @@
     </div>
 
     <script>
-        // 20 Smartlink Boxes Data
-        const trendingItems = [
-            { id: 1, tag: "AI Tech", title: "Quantum AI Chip Breakthrough", time: "10m ago", link: "YOUR_SMARTLINK_HERE" },
-            { id: 2, tag: "Crypto", title: "Bitcoin Crosses Key Resistance", time: "20m ago", link: "YOUR_SMARTLINK_HERE" },
-            { id: 3, tag: "Space", title: "NASA Captures High-Res Exoplanet", time: "35m ago", link: "YOUR_SMARTLINK_HERE" },
-            { id: 4, tag: "Economy", title: "Central Banks Adjust Rates", time: "50m ago", link: "YOUR_SMARTLINK_HERE" },
-            { id: 5, tag: "EVs", title: "Solid-State Battery Hits 1000KM Range", time: "1h ago", link: "YOUR_SMARTLINK_HERE" },
-            { id: 6, tag: "Security", title: "Critical Zero-Day Patch Released", time: "1.5h ago", link: "YOUR_SMARTLINK_HERE" },
-            { id: 7, tag: "Health", title: "Gene Therapy Vision Restoration", time: "2h ago", link: "YOUR_SMARTLINK_HERE" },
-            { id: 8, tag: "Energy", title: "Floating Solar Plant Starts Powering", time: "2.5h ago", link: "YOUR_SMARTLINK_HERE" },
-            { id: 9, tag: "Gaming", title: "Esports Event Hits 100M Views", time: "3h ago", link: "YOUR_SMARTLINK_HERE" },
-            { id: 10, tag: "Gadgets", title: "Holographic Smart Glasses Launch", time: "3.5h ago", link: "YOUR_SMARTLINK_HERE" },
-            { id: 11, tag: "Mobile", title: "Tri-Fold Display Phone Announced", time: "4h ago", link: "YOUR_SMARTLINK_HERE" },
-            { id: 12, tag: "Software", title: "Autonomous Coding Agents Live", time: "4.5h ago", link: "YOUR_SMARTLINK_HERE" },
-            { id: 13, tag: "Aviation", title: "Zero-Emission Supersonic Jet Test", time: "5h ago", link: "YOUR_SMARTLINK_HERE" },
-            { id: 14, tag: "Media", title: "Record $2B Streaming Deal Signed", time: "5.5h ago", link: "YOUR_SMARTLINK_HERE" },
-            { id: 15, tag: "Climate", title: "Direct Air Carbon Capture Plant", time: "6h ago", link: "YOUR_SMARTLINK_HERE" },
-            { id: 16, tag: "Fintech", title: "Instant Cross-Border QR Payment", time: "6.5h ago", link: "YOUR_SMARTLINK_HERE" },
-            { id: 17, tag: "Robotics", title: "Humanoid Robots In Warehouses", time: "7h ago", link: "YOUR_SMARTLINK_HERE" },
-            { id: 18, tag: "Logistics", title: "15-Min Drone Parcel Delivery", time: "7.5h ago", link: "YOUR_SMARTLINK_HERE" },
-            { id: 19, tag: "Neurotech", title: "Brain BCI Typing at 80 WPM", time: "8h ago", link: "YOUR_SMARTLINK_HERE" },
-            { id: 20, tag: "Web 3.0", title: "Next-Gen Web Speed Engine Standard", time: "9h ago", link: "YOUR_SMARTLINK_HERE" }
+        // Data for 50 Trending Topics with 5 Visual Style Variations
+        const categories = ["AI Tech", "Crypto", "Markets", "Cybersecurity", "Space", "Gaming", "EV Tech", "Energy", "Robotics", "Health"];
+        const styles = ["box-style-1", "box-style-2", "box-style-3", "box-style-4", "box-style-5"];
+        const buttonTexts = ["🔥 View Story ➔", "⚡ Read Updates ➔", "🚀 Deep Dive ➔", "💥 Breaking News ➔", "📈 Check Trends ➔"];
+
+        const rawTitles = [
+            "Quantum AI Chip Breakthrough Announced", "Bitcoin Surges Past Key Resistance Level", "NASA Captures High-Definition Exoplanet",
+            "Central Banks Adjust Interest Rates Globally", "Solid-State Battery Promises 1000KM EV Range", "Zero-Day Vulnerability Discovered in IoT",
+            "Gene Therapy Trial Reverses Vision Loss", "World's Largest Floating Solar Farm Starts", "Global Esports Event Draws 100M Viewers",
+            "Holographic Smart Glasses Aim to Replace Phones", "Dual-Folding Screen Device Launched Globally", "Autonomous AI Agents Complete Software Cycle",
+            "Commercial Supersonic Jet Completes Test Flight", "Streaming Giant Signs Record $2B Studio Deal", "New Direct Air Carbon Capture Plant Opens",
+            "Cross-Border Instant Digital Payment Rail", "Humanoid Robots Deployed in Logistics Hubs", "Drone Delivery Coverage Expands to 50 Cities",
+            "Brain Interface Allows Typing 80 Words Per Min", "New Web Engine Standard Speeds Up Browsing", "Fusion Energy Reactor Sustains Plasma Output",
+            "Asteroid Mining Probe Transmits Resource Data", "Graphene Supercapacitors Enable 3-Min Charging", "Global Microchip Supply Chain Reaches Peak Output",
+            "Bioprinting Breakthrough Recreates Human Tissue", "6G Network Architecture Tests Reach 1 Terabit", "AI Medical Diagnostic Tool Receives FDA Approval",
+            "Offshore Wind Turbines Generate Record Output", "Decentralized Social Protocol Crosses 50M Users", "Quantum Encryption Key Deployed in Banking",
+            "Smart Agriculture Drones Boost Crop Yields 40%", "Spacecraft Propelled by Solar Sail Reaches Orbit", "Generative Video AI Models Create HD Movies",
+            "Next-Gen Lithium-Sulfur Batteries Enter Testing", "Global Renewable Energy Share Crosses 40%", "Virtual Reality Operating System Released",
+            "Autonomous Freight Trucks Clear Highway Testing", "Exoskeleton Suits Standardized for Factory Work", "Micro-Nuclear Reactors Approved for Rural Grids",
+            "Deep Ocean Exploration Discovers New Ecosystems", "Hyperloop Vacuum Track Test Reaches High Speed", "AI Cybersecurity Agent Defends Cloud Infrastructure",
+            "Synthetic Biology Startup Creates Biodegradable Plastic", "Smart City Traffic Mesh System Reduces Congestion", "Orbital Space Hotel Begins Accepting Reservations",
+            "Wearable Glucose Sensor Operates Without Needles", "Carbon-Negative Concrete Standardized Worldwide", "Superconducting Material Reaches Room Temp Milestone",
+            "3D-Printed Housing Complexes Completed in 48 Hours", "Next-Gen Subsea Fiber Cable Boosts Transatlantic Speeds"
         ];
+
+        // Generate Array of 50 Unique Items
+        const trendingItems = rawTitles.map((title, index) => ({
+            id: index + 1,
+            tag: categories[index % categories.length],
+            style: styles[index % styles.length],
+            btnText: buttonTexts[index % buttonTexts.length],
+            title: title,
+            time: `${(index + 1) * 12}m ago`,
+            link: "YOUR_SMARTLINK_HERE"
+        }));
 
         function renderSidebarBoxes() {
             const container = document.getElementById('sidebarBoxesList');
@@ -309,15 +360,15 @@
 
             trendingItems.forEach(item => {
                 const box = document.createElement('div');
-                box.className = 'side-box';
+                box.className = `side-box ${item.style}`;
                 box.innerHTML = `
                     <div class="box-header">
                         <span class="box-tag">${item.tag}</span>
-                        <span class="box-time">${item.time}</span>
+                        <span class="box-time">🕒 ${item.time}</span>
                     </div>
                     <div class="box-title">${item.title}</div>
                     <a href="${item.link}" target="_blank" class="smartlink-btn">
-                        🔥 View Details / Link ➔
+                        ${item.btnText}
                     </a>
                 `;
                 container.appendChild(box);
