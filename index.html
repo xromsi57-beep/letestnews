@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Letest New - Live Global News</title>
+    <title>Chronicle 24/7 - Live Global News</title>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
         :root {
@@ -15,7 +15,7 @@
             --text-main: #f1f5f9;
             --text-muted: #94a3b8;
             
-            /* Custom Colors Requested */
+            /* Custom Accent Colors */
             --color-red: #ef4444;
             --color-skyblue: #38bdf8;
             --color-purple: #a855f7;
@@ -64,30 +64,6 @@
             max-width: 1100px;
             margin: 35px auto;
             padding: 0 20px;
-        }
-
-        .top-action-bar {
-            display: flex;
-            justify-content: flex-end;
-            margin-bottom: 20px;
-        }
-
-        .login-trigger-btn {
-            background: rgba(168, 85, 247, 0.12);
-            color: var(--color-purple);
-            border: 1px solid var(--color-purple);
-            padding: 8px 18px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-
-        .login-trigger-btn:hover {
-            background: var(--color-purple);
-            color: white;
-            box-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
         }
 
         .search-bar-container {
@@ -146,86 +122,6 @@
             margin-bottom: 10px;
         }
 
-        .admin-panel {
-            background: var(--bg-card);
-            border: 1px solid var(--color-purple);
-            padding: 25px;
-            border-radius: 16px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
-            margin-bottom: 30px;
-            display: none;
-        }
-
-        .admin-panel.active {
-            display: block;
-        }
-
-        .admin-panel h2 {
-            margin-top: 0;
-            color: var(--color-skyblue);
-            font-size: 1.3rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .close-admin {
-            background: none;
-            border: none;
-            color: var(--text-muted);
-            cursor: pointer;
-            font-size: 1.3rem;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 6px;
-            font-size: 0.88rem;
-            color: var(--color-skyblue);
-            font-weight: 600;
-        }
-
-        .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            background: var(--bg-main);
-            border: 1px solid var(--card-border);
-            border-radius: 8px;
-            color: var(--text-main);
-            font-size: 0.95rem;
-            box-sizing: border-box;
-            outline: none;
-        }
-
-        .form-group input:focus, .form-group textarea:focus {
-            border-color: var(--color-purple);
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            height: 120px;
-        }
-
-        button.primary-btn {
-            background: var(--color-purple);
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            font-size: 0.95rem;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 700;
-            transition: background 0.3s;
-        }
-
-        button.primary-btn:hover {
-            background: var(--color-purple-hover);
-        }
-
         .news-feed h2 {
             font-size: 1.5rem;
             margin-bottom: 25px;
@@ -234,6 +130,7 @@
             margin-top: 0;
         }
 
+        /* News Card Styling */
         .news-card {
             background: var(--bg-card);
             border: 1px solid var(--card-border);
@@ -243,6 +140,7 @@
             margin-bottom: 22px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
             transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+            position: relative;
         }
 
         .news-card:hover {
@@ -255,7 +153,7 @@
 
         .news-card h3 {
             margin-top: 0;
-            font-size: 1.45rem;
+            font-size: 1.35rem;
             color: #ffffff;
             line-height: 1.35;
         }
@@ -266,6 +164,16 @@
             align-items: center;
             margin-bottom: 15px;
             flex-wrap: wrap;
+        }
+
+        .news-tag {
+            font-size: 0.75rem;
+            color: #ffffff;
+            background: var(--color-purple);
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-weight: 700;
+            text-transform: uppercase;
         }
 
         .news-date, .read-time {
@@ -279,26 +187,48 @@
         }
 
         .news-content {
-            line-height: 1.7;
+            line-height: 1.6;
             color: #cbd5e1;
-            white-space: pre-wrap;
-            font-size: 1rem;
+            font-size: 0.95rem;
+            margin-bottom: 18px;
         }
 
         .card-actions {
             display: flex;
             gap: 12px;
-            margin-top: 18px;
             align-items: center;
+            flex-wrap: wrap;
+        }
+
+        /* SmartLink CTA Button Style */
+        .smartlink-btn {
+            background: linear-gradient(135deg, var(--color-purple), var(--color-skyblue));
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: opacity 0.2s, transform 0.2s;
+        }
+
+        .smartlink-btn:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
         }
 
         .share-btn {
             background: rgba(56, 189, 248, 0.12);
             color: var(--color-skyblue);
             border: 1px solid rgba(56, 189, 248, 0.3);
-            padding: 7px 15px;
+            padding: 9px 16px;
             font-size: 0.85rem;
-            border-radius: 6px;
+            border-radius: 8px;
             cursor: pointer;
             font-weight: 600;
             transition: all 0.2s;
@@ -307,27 +237,6 @@
         .share-btn:hover {
             background: var(--color-skyblue);
             color: #0a0e17;
-        }
-
-        .delete-btn {
-            background: rgba(239, 68, 68, 0.12);
-            color: var(--color-red);
-            border: 1px solid rgba(239, 68, 68, 0.3);
-            padding: 7px 15px;
-            font-size: 0.85rem;
-            border-radius: 6px;
-            cursor: pointer;
-            display: none;
-            font-weight: 600;
-        }
-
-        .delete-btn.admin-visible {
-            display: inline-block;
-        }
-
-        .delete-btn:hover {
-            background: var(--color-red);
-            color: white;
         }
 
         #toastContainer {
@@ -348,23 +257,10 @@
             border-radius: 10px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.4);
             font-size: 0.9rem;
-            animation: slideIn 0.3s ease, fadeOut 0.3s ease 2.7s;
             display: flex;
             align-items: center;
             gap: 10px;
-        }
-
-        .toast.success { border-left: 4px solid var(--success); }
-        .toast.error { border-left: 4px solid var(--color-red); }
-
-        @keyframes slideIn {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-
-        @keyframes fadeOut {
-            from { opacity: 1; }
-            to { opacity: 0; }
+            border-left: 4px solid var(--success);
         }
     </style>
 </head>
@@ -374,51 +270,33 @@
 
     <header>
         <h1>Chronicle 24/7</h1>
-        <p>Your Live Global News Stream</p>
+        <p>Live Interactive Global News Stream</p>
     </header>
 
     <div class="container">
-        
-        <div class="top-action-bar">
-            <button class="login-trigger-btn" id="toggleLoginBtn" onclick="handleAdminAccess()">🔒 Admin Portal</button>
-        </div>
 
         <div class="search-bar-container">
-            <input type="text" id="searchInput" class="search-input" placeholder="🔍 Search live news headlines or stories..." oninput="filterNews()">
-        </div>
-
-        <div class="admin-panel" id="adminPanel">
-            <h2>
-                <span>📢 Publish New Article</span>
-                <button class="close-admin" onclick="closeAdminPanel()">✕</button>
-            </h2>
-            <form id="newsForm">
-                <div class="form-group">
-                    <label for="title">Headline</label>
-                    <input type="text" id="title" required placeholder="Catchy news headline...">
-                </div>
-                <div class="form-group">
-                    <label for="content">Full Story</label>
-                    <textarea id="content" required placeholder="Write the complete news report here..."></textarea>
-                </div>
-                <button type="submit" class="primary-btn" id="publishBtn">Publish to Cloud</button>
-            </form>
+            <input type="text" id="searchInput" class="search-input" placeholder="🔍 Search live news headlines or categories..." oninput="filterNews()">
         </div>
 
         <div class="main-layout">
             
             <div class="news-feed">
-                <h2>Live Feed</h2>
+                <h2>Live Trending Feed</h2>
                 
                 <div id="newsContainer">
-                    <div class="loading-text" style="text-align: center; color: var(--color-skyblue); padding: 40px;">Connecting to live feed...</div>
+                    <!-- 20 Interactive News Cards inserted dynamically via JavaScript -->
                 </div>
             </div>
 
             <aside class="sidebar">
                 <div class="sidebar-widget">
-                    <h3>Channel Updates</h3>
-                    <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0;">Stay tuned for real-time updates and global news live streams.</p>
+                    <h3>⚡ Live Updates</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0;">Updated every few minutes with fresh breaking coverage worldwide.</p>
+                </div>
+                <div class="sidebar-widget">
+                    <h3>🔥 Popular Categories</h3>
+                    <p style="font-size: 0.85rem; color: var(--color-skyblue);">Tech • AI • Markets • Science • Sports • Entertainment</p>
                 </div>
             </aside>
 
@@ -427,173 +305,252 @@
     </div>
 
     <script>
-        const SUPABASE_URL = 'https://lxktfhinbdchhqgoutke.supabase.co';
-        const SUPABASE_ANON_KEY = 'sb_publishable_dABXCMeRrnUbouX9-AlYhw_ZEzDnJ7_';
+        // Data for 20 Interactive News Containers with Smartlink Placeholder
+        const articles = [
+            {
+                id: 1,
+                tag: "Tech & AI",
+                title: "Next-Gen Quantum AI Chip Breakthrough Announced by Tech Giants",
+                time: "10 mins ago",
+                read: "2 min read",
+                content: "Engineers have successfully demonstrated a scalable quantum computing architecture capable of running real-time neural network calculations with zero latency.",
+                smartlink: "YOUR_SMARTLINK_HERE"
+            },
+            {
+                id: 2,
+                tag: "Crypto & Markets",
+                title: "Bitcoin Surges Past Key Resistance Level as Institutional Inflow Hits Record High",
+                time: "25 mins ago",
+                read: "3 min read",
+                content: "Global digital asset markets saw an explosive surge following new ETF approval updates and renewed confidence from European commercial banks.",
+                smartlink: "YOUR_SMARTLINK_HERE"
+            },
+            {
+                id: 3,
+                tag: "Space Exploration",
+                title: "NASA Spacecraft Captures High-Definition Images of Distant Exoplanet System",
+                time: "40 mins ago",
+                read: "4 min read",
+                content: "Deep space observation telemetry returned unbelievable clarity regarding potential atmospheric water vapor levels in neighboring solar star systems.",
+                smartlink: "YOUR_SMARTLINK_HERE"
+            },
+            {
+                id: 4,
+                tag: "Global Economy",
+                title: "Central Banks Announce Synchronized Interest Rate Adjustments for Q4",
+                time: "1 hour ago",
+                read: "3 min read",
+                content: "Policy makers across North America and Europe released coordinated statements outlining measures to stabilize inflation while promoting sustainable job growth.",
+                smartlink: "YOUR_SMARTLINK_HERE"
+            },
+            {
+                id: 5,
+                tag: "Automotive & EV",
+                title: "Revolutionary Solid-State Battery Promises 1,000 KM EV Range on 10-Minute Charge",
+                time: "1.5 hours ago",
+                read: "2 min read",
+                content: "Automotive researchers revealed commercial production timelines for high-density solid state batteries expected to revolutionize long-distance electric mobility.",
+                smartlink: "YOUR_SMARTLINK_HERE"
+            },
+            {
+                id: 6,
+                tag: "Cybersecurity",
+                title: "Critical Zero-Day Vulnerability Discovered Affecting Millions of IoT Devices",
+                time: "2 hours ago",
+                read: "3 min read",
+                content: "Security researchers urge immediate firmware updates for connected smart home hubs after discovering an unpatched vulnerability exploited by rogue actors.",
+                smartlink: "YOUR_SMARTLINK_HERE"
+            },
+            {
+                id: 7,
+                tag: "Health & Biotech",
+                title: "Gene Therapy Clinical Trial Successfully Reverses Inherited Vision Loss",
+                time: "2.5 hours ago",
+                read: "4 min read",
+                content: "Medical science hits a crucial milestone after target patient trials demonstrated sustained sensory restoration without significant side effects.",
+                smartlink: "YOUR_SMARTLINK_HERE"
+            },
+            {
+                id: 8,
+                tag: "Clean Energy",
+                title: "World's Largest Offshore Floating Solar Farm Starts Generating Power",
+                time: "3 hours ago",
+                read: "2 min read",
+                content: "Designed to withstand category 5 hurricanes, the massive renewable grid installation is set to supply clean electricity to over 500,000 coastal households.",
+                smartlink: "YOUR_SMARTLINK_HERE"
+            },
+            {
+                id: 9,
+                tag: "E-Sports & Gaming",
+                title: "Global E-Sports Championship Draws Record-Breaking 100 Million Concurrent Viewers",
+                time: "3.5 hours ago",
+                read: "2 min read",
+                content: "Competitive gaming solidifies its place as mainstream entertainment following unprecedented viewership metrics recorded across global streaming channels.",
+                smartlink: "YOUR_SMARTLINK_HERE"
+            },
+            {
+                id: 10,
+                tag: "Gadgets & Hardware",
+                title: "Next-Gen Holographic Smart Glasses Aim to Replace Smartphones by 2028",
+                time: "4 hours ago",
+                read: "3 min read",
+                content: "Lightweight spatial computing glasses with integrated conversational voice assistants aim to shift user habits away from traditional screen-based hardware.",
+                smartlink: "YOUR_SMARTLINK_HERE"
+            },
+            {
+                id: 11,
+                tag: "Mobile Tech",
+                title: "Major Smartphone Brand Launches Dual-Folding Screen Device Worldwide",
+                time: "4.5 hours ago",
+                read: "2 min read",
+                content: "Featuring a tri-fold design that expands from a standard mobile form factor into a full-sized 10-inch OLED tablet, pre-orders surpassed expectation.",
+                smartlink: "YOUR_SMARTLINK_HERE"
+            },
+            {
+                id: 12,
+                tag: "Artificial Intelligence",
+                title: "Autonomous AI Agents Complete First Multi-Agent Software Development Cycle",
+                time: "5 hours ago",
+                read: "4 min read",
+                content: "Software engineering protocols reach new speed milestones as cooperative agent frameworks successfully build, test, and deploy complex cloud applications.",
+                smartlink: "YOUR_SMARTLINK_HERE"
+            },
+            {
+                id: 13,
+                tag: "Aviation & Defense",
+                title: "Commercial Supersonic Jet Completes First Zero-Emission Test Flight",
+                time: "5.5 hours ago",
+                read: "3 min read",
+                content: "Halving flight durations over oceanic routes, the eco-friendly sustainable aviation fuel powertrain successfully completed high-altitude Mach 1.8 trials.",
+                smartlink: "YOUR_SMARTLINK_HERE"
+            },
+            {
+                id: 14,
+                tag: "Entertainment",
+                title: "Streaming Giant Signs Record $2 Billion Multi-Year Blockbuster Production Deal",
+                time: "6 hours ago",
+                read: "2 min read",
+                content: "Content creation moves into high gear as top studios join forces to produce exclusive interactive cinematic experiences using real-time rendering engines.",
+                smartlink: "YOUR_SMARTLINK_HERE"
+            },
+            {
+                id: 15,
+                tag: "Climate Science",
+                title: "New Atmospheric Carbon Capture Plant Begins Full Operations in Iceland",
+                time: "6.5 hours ago",
+                read: "3 min read",
+                content: "Utilizing deep underground basalt mineralization, the facility removes thousands of metric tons of CO2 directly from ambient air every single month.",
+                smartlink: "YOUR_SMARTLINK_HERE"
+            },
+            {
+                id: 16,
+                tag: "Fintech",
+                title: "Cross-Border Instant Digital Payment Rail Connects 15 Major Asian Countries",
+                time: "7 hours ago",
+                read: "2 min read",
+                content: "Tourists and merchants can now transact seamlessly across borders using QR code settlements with zero conversion markup fees.",
+                smartlink: "YOUR_SMARTLINK_HERE"
+            },
+            {
+                id: 17,
+                tag: "Robotics",
+                title: "Humanoid Robots Deployed in Logistics Facilities to Handle Peak Demand",
+                time: "7.5 hours ago",
+                read: "3 min read",
+                content: "Equipped with advanced tactile feedback sensors, bipedal robotic fleets assist human workers in safely sorting, packing, and dispatching cargo.",
+                smartlink: "YOUR_SMARTLINK_HERE"
+            },
+            {
+                id: 18,
+                tag: "E-Commerce",
+                title: "Same-Day Drone Delivery Service Expands Coverage to 50 New Metropolitan Cities",
+                time: "8 hours ago",
+                read: "2 min read",
+                content: "Autonomous aerial parcel drops under 15 minutes become everyday reality for suburban households ordering essential groceries and pharmaceuticals.",
+                smartlink: "YOUR_SMARTLINK_HERE"
+            },
+            {
+                id: 19,
+                tag: "Neuroscience",
+                title: "Non-Invasive Brain-Computer Interface Allows Typing Speed of 80 Words Per Minute",
+                time: "8.5 hours ago",
+                read: "4 min read",
+                content: "A sleek wearable headband reading subtle neural signals empowers paralyzed individuals to communicate seamlessly with digital screens in real time.",
+                smartlink: "YOUR_SMARTLINK_HERE"
+            },
+            {
+                id: 20,
+                tag: "Web Developments",
+                title: "Next Generation Web Framework Standard Speeds Up Internet Browsing By 300%",
+                time: "9 hours ago",
+                read: "2 min read",
+                content: "Browsers globally implement lightweight engine protocols reducing RAM footprint drastically while increasing rendering speeds on mobile and desktop devices.",
+                smartlink: "YOUR_SMARTLINK_HERE"
+            }
+        ];
 
-        const { createClient } = supabase;
-        const _supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        let currentArticles = [...articles];
 
-        const newsForm = document.getElementById('newsForm');
-        const newsContainer = document.getElementById('newsContainer');
-        const publishBtn = document.getElementById('publishBtn');
-        const adminPanel = document.getElementById('adminPanel');
-
-        let isAdminLoggedIn = false;
-        let allNewsData = [];
-
-        function showToast(message, type = 'success') {
+        function showToast(message) {
             const container = document.getElementById('toastContainer');
             const toast = document.createElement('div');
-            toast.className = `toast ${type}`;
-            toast.innerHTML = `<span>${type === 'success' ? '✅' : '⚠️'}</span> ${message}`;
+            toast.className = 'toast';
+            toast.innerHTML = `<span>✅</span> ${message}`;
             container.appendChild(toast);
             setTimeout(() => toast.remove(), 3000);
         }
 
-        window.handleAdminAccess = function() {
-            if (isAdminLoggedIn) {
-                adminPanel.classList.toggle('active');
+        function renderArticles(data) {
+            const container = document.getElementById('newsContainer');
+            container.innerHTML = '';
+
+            if (data.length === 0) {
+                container.innerHTML = '<div style="text-align:center; color:var(--text-muted); padding:40px;">No articles found matching your search.</div>';
                 return;
             }
 
-            const password = prompt("Enter Admin Secret Password:");
-            if (password === "admin123") {
-                isAdminLoggedIn = true;
-                adminPanel.classList.add('active');
-                document.getElementById('toggleLoginBtn').textContent = "🔓 Admin Panel Open";
-                renderNews(allNewsData);
-                showToast("Admin Login Successful!");
-            } else if (password !== null) {
-                showToast("Incorrect Password!", "error");
-            }
-        };
-
-        window.closeAdminPanel = function() {
-            adminPanel.classList.remove('active');
-        };
-
-        async function fetchNews() {
-            const { data, error } = await _supabase
-                .from('news')
-                .select('*')
-                .order('created_at', { ascending: false });
-
-            if (error) {
-                console.error('Error fetching news:', error);
-                newsContainer.innerHTML = '<div class="empty-text" style="text-align:center; color:var(--text-muted); padding:40px;">Failed to load news.</div>';
-                return;
-            }
-
-            allNewsData = data || [];
-            renderNews(allNewsData);
-        }
-
-        function renderNews(dataList) {
-            newsContainer.innerHTML = '';
-
-            if (!dataList || dataList.length === 0) {
-                newsContainer.innerHTML = '<div class="empty-text" style="text-align:center; color:var(--text-muted); padding:40px;">No matching news found.</div>';
-                return;
-            }
-
-            dataList.forEach((news) => {
-                let dateStr = new Date(news.created_at).toLocaleString('en-US', { 
-                    month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' 
-                });
-
-                const wordCount = news.content ? news.content.split(/\s+/).length : 0;
-                const readTime = Math.ceil(wordCount / 180) || 1;
-
+            data.forEach(article => {
                 const card = document.createElement('div');
                 card.className = 'news-card';
-                
-                const deleteBtnClass = isAdminLoggedIn ? "delete-btn admin-visible" : "delete-btn";
-
                 card.innerHTML = `
-                    <h3>${escapeHtml(news.title)}</h3>
                     <div class="news-meta-info">
-                        <span class="news-date">📅 ${dateStr}</span>
-                        <span class="read-time">⏱️ ${readTime} min read</span>
+                        <span class="news-tag">${article.tag}</span>
+                        <span class="news-date">📅 ${article.time}</span>
+                        <span class="read-time">⏱️ ${article.read}</span>
                     </div>
-                    <div class="news-content">${escapeHtml(news.content)}</div>
+                    <h3>${article.title}</h3>
+                    <div class="news-content">${article.content}</div>
                     <div class="card-actions">
-                        <button class="share-btn" onclick="shareArticle('${escapeHtml(news.title).replace(/'/g, "\\'")}')">🔗 Share</button>
-                        <button class="${deleteBtnClass}" onclick="deleteNewsItem(${news.id})">🗑️ Delete Article</button>
+                        <a href="${article.smartlink}" target="_blank" class="smartlink-btn">
+                            <span>🔥 Read Full Story</span>
+                            <span>➔</span>
+                        </a>
+                        <button class="share-btn" onclick="shareArticle('${article.title.replace(/'/g, "\\'")}')">🔗 Share</button>
                     </div>
                 `;
-                newsContainer.appendChild(card);
+                container.appendChild(card);
             });
         }
 
-        window.filterNews = function() {
+        function filterNews() {
             const query = document.getElementById('searchInput').value.toLowerCase();
-            const filtered = allNewsData.filter(item => 
+            const filtered = articles.filter(item => 
                 item.title.toLowerCase().includes(query) || 
-                item.content.toLowerCase().includes(query)
+                item.content.toLowerCase().includes(query) ||
+                item.tag.toLowerCase().includes(query)
             );
-            renderNews(filtered);
-        };
-
-        window.shareArticle = function(title) {
-            if (navigator.clipboard) {
-                navigator.clipboard.writeText(window.location.href);
-                showToast(`Link copied for: "${title.substring(0, 25)}..."`);
-            } else {
-                showToast("Unable to copy link", "error");
-            }
-        };
-
-        newsForm.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            if (!isAdminLoggedIn) return;
-
-            publishBtn.disabled = true;
-            publishBtn.textContent = "Publishing...";
-
-            const title = document.getElementById('title').value;
-            const content = document.getElementById('content').value;
-
-            const { error } = await _supabase
-                .from('news')
-                .insert([{ title, content }]);
-
-            publishBtn.disabled = false;
-            publishBtn.textContent = "Publish to Cloud";
-
-            if (error) {
-                showToast("Error publishing: " + error.message, "error");
-            } else {
-                newsForm.reset();
-                adminPanel.classList.remove('active');
-                showToast("Article published successfully!");
-                fetchNews();
-            }
-        });
-
-        window.deleteNewsItem = async function(id) {
-            if (!isAdminLoggedIn) return;
-            if (confirm("Are you sure you want to delete this news?")) {
-                const { error } = await _supabase
-                    .from('news')
-                    .delete()
-                    .eq('id', id);
-
-                if (error) {
-                    showToast("Error deleting: " + error.message, "error");
-                } else {
-                    showToast("Article deleted.");
-                    fetchNews();
-                }
-            }
-        };
-
-        function escapeHtml(text) {
-            if (!text) return '';
-            const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
-            return text.toString().replace(/[&<>"']/g, function(m) { return map[m]; });
+            renderArticles(filtered);
         }
 
-        fetchNews();
+        function shareArticle(title) {
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(window.location.href);
+                showToast(`Link copied for article!`);
+            }
+        }
+
+        // Initial Load
+        renderArticles(articles);
     </script>
 </body>
 </html>
