@@ -151,6 +151,7 @@
             border-radius: 8px;
             padding: 14px;
             transition: transform 0.2s;
+            cursor: pointer;
         }
 
         .side-box:hover {
@@ -243,7 +244,7 @@
                     </div>
                     <h3>Global Tech Summit Unveils Next-Generation AI Supercomputers</h3>
                     <p>Scientists and tech leaders have officially demonstrated real-time quantum neural network processing, enabling instant language translation and complex climate simulation at unprecedented speeds.</p>
-                    <a href="#" class="read-more-btn">Read Full Article ➔</a>
+                    <a href="https://www.profitableratecpmnetwork.com/mcrcerya?key=a55bd3205d87cc3b096cfd06eabbb7c4" target="_blank" class="read-more-btn">Read Full Article ➔</a>
                 </div>
 
                 <div class="main-news-card">
@@ -253,7 +254,7 @@
                     </div>
                     <h3>Global Markets Rally Following International Trade Framework</h3>
                     <p>Stock indices across Asian and European markets recorded significant gains today after cross-border trade agreements eased supply chain tariffs on semiconductor components.</p>
-                    <a href="#" class="read-more-btn">Read Full Article ➔</a>
+                    <a href="https://www.profitableratecpmnetwork.com/mcrcerya?key=a55bd3205d87cc3b096cfd06eabbb7c4" target="_blank" class="read-more-btn">Read Full Article ➔</a>
                 </div>
             </div>
 
@@ -272,26 +273,24 @@
     </div>
 
     <script>
-        // 1. Agar direct link lagana chahte ho to yha पेस्ट kare (pest link 1 hear)
-        // Note: Agar isme link daloge to button us par open hoga.
+        // 1. DIRECT AD LINKS (Aapke Ad Network ke Links):
         var adLinks = {
             1: "https://www.profitableratecpmnetwork.com/mcrcerya?key=a55bd3205d87cc3b096cfd06eabbb7c4",
             2: "pest link 2nd hear",
             3: "pest link 3rd hear",
             4: "pest link 4th hear",
             5: "pest link 5th hear"
-            // isi tarah 50 tak de sakte ho
+            // Aap 50 tak links yha pest kar sakte hai
         };
 
-        // 2. Agar AD Code/Script code lagana chahte ho to yha पेस्ट kare (pest code 1)
-        // Note: Agar kisi box me code daloge to Button ki jagah Ad Script show hogi.
+        // 2. HTML/SCRIPT AD CODES (AdSense/Banner Codes):
+        // Agar aap pure box me Adsense ya Banner ad dikhana chahte hai to yha pest kare
         var adCodes = {
             1: "", // pest code 1
             2: "", // pest code 2
             3: "", // pest code 3
             4: "", // pest code 4
             5: ""  // pest code 5
-            // isi tarah 50 tak de सकते हो
         };
 
         var newsTopics = [
@@ -353,13 +352,16 @@
         var container = document.getElementById('sidebarBoxesList');
         var generatedHtml = '';
 
+        // Default Link if list finishes
+        var defaultAdLink = "https://www.profitableratecpmnetwork.com/mcrcerya?key=a55bd3205d87cc3b096cfd06eabbb7c4";
+
         for (var i = 0; i < newsTopics.length; i++) {
             var boxIndex = i + 1; // 1 to 50
             var currentStyle = styles[i % styles.length];
             var currentTag = tags[i % tags.length];
             var timeAgo = boxIndex * 12 + "m ago";
 
-            var linkValue = adLinks[boxIndex] ? adLinks[boxIndex] : "#";
+            var linkValue = adLinks[boxIndex] ? adLinks[boxIndex] : defaultAdLink;
             var codeValue = adCodes[boxIndex] ? adCodes[boxIndex] : "";
 
             generatedHtml += '<div class="side-box ' + currentStyle + '">' +
@@ -369,11 +371,11 @@
                 '</div>' +
                 '<div class="box-title">' + newsTopics[i] + '</div>';
 
-            // Check: Agar code bhara hai to code dikhayega, varna direct link button dikhayega
+            // Checking logic: If code exists render code, else render button linking directly to ad link
             if (codeValue !== "") {
                 generatedHtml += '<div class="ad-container">' + codeValue + '</div>';
             } else {
-                generatedHtml += '<a href="' + linkValue + '" target="_blank" class="btn">Read Updates ➔</a>';
+                generatedHtml += '<a href="' + linkValue + '" target="_blank" rel="noopener noreferrer" class="btn">Read Updates ➔</a>';
             }
 
             generatedHtml += '</div>';
