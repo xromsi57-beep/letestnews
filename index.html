@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> NNEWS-24/7 - Live News </title>
+    <title>Live News & 50 Dynamic Updates</title>
     <style>
         :root {
             --bg-main: #0a0e17;
@@ -20,154 +20,140 @@
         }
 
         body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background-color: var(--bg-main);
-            background-image: radial-gradient(circle at 50% 0%, #1e1b4b 0%, #0a0e17 75%);
-            background-attachment: fixed;
             color: var(--text-main);
-            min-height: 100vh;
             margin: 0;
             padding: 0;
-            padding-bottom: 40px;
+            padding-bottom: 50px;
         }
 
         header {
             text-align: center;
             padding: 30px 20px;
             border-bottom: 1px solid var(--card-border);
-            background: rgba(10, 14, 23, 0.8);
-            backdrop-filter: blur(10px);
+            background: #0f172a;
         }
 
         header h1 {
             margin: 0;
-            font-size: 2.5rem;
-            background: linear-gradient(to right, var(--color-red), var(--color-purple), var(--color-skyblue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 900;
+            font-size: 2.2rem;
+            color: var(--color-skyblue);
         }
 
         header p {
-            margin: 5px 0 0;
-            color: var(--color-skyblue);
-            font-size: 1rem;
+            margin: 8px 0 0;
+            color: var(--text-muted);
         }
 
         .container {
-            max-width: 1250px;
-            margin: 25px auto;
-            padding: 0 20px;
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 15px;
         }
 
-        /* 2 Column Main Layout */
         .main-layout {
-            display: grid;
-            grid-template-columns: 1fr 380px;
+            display: flex;
             gap: 25px;
-            align-items: start;
+            align-items: flex-start;
         }
 
-        @media (max-width: 900px) {
-            .main-layout {
-                grid-template-columns: 1fr;
-            }
+        /* Left Side: Main News Section */
+        .main-news-section {
+            flex: 2;
         }
 
         .section-title {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
+            margin-top: 0;
             margin-bottom: 20px;
+            color: var(--color-skyblue);
             border-left: 4px solid var(--color-red);
             padding-left: 10px;
-            margin-top: 0;
         }
 
-        /* Left Side Main News Styling */
         .main-news-card {
             background: var(--bg-card);
             border: 1px solid var(--card-border);
-            border-radius: 16px;
-            padding: 24px;
+            border-radius: 12px;
+            padding: 22px;
             margin-bottom: 20px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         }
 
-        .main-news-card h3 {
-            margin-top: 10px;
-            font-size: 1.4rem;
-            color: #ffffff;
-        }
-
-        .news-content {
-            line-height: 1.6;
-            color: #cbd5e1;
-            font-size: 0.98rem;
-            margin: 15px 0;
-        }
-
-        .news-tag {
+        .news-badge {
+            background: var(--color-red);
+            color: white;
             font-size: 0.75rem;
-            color: #ffffff;
-            background: var(--color-purple);
-            padding: 3px 10px;
-            border-radius: 20px;
-            font-weight: 700;
+            font-weight: bold;
+            padding: 3px 8px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 10px;
         }
 
         .news-date {
-            font-size: 0.78rem;
-            color: var(--color-skyblue);
+            font-size: 0.8rem;
+            color: var(--text-muted);
             margin-left: 10px;
         }
 
-        /* Right Side Sidebar Styling */
-        .sidebar {
-            position: sticky;
-            top: 20px;
+        .main-news-card h3 {
+            margin: 5px 0 12px;
+            font-size: 1.3rem;
+            color: #ffffff;
+            line-height: 1.4;
         }
 
-        .sidebar-widget {
+        .main-news-card p {
+            color: #cbd5e1;
+            line-height: 1.6;
+            margin: 0 0 15px;
+            font-size: 0.95rem;
+        }
+
+        .read-more-btn {
+            display: inline-block;
+            color: var(--color-skyblue);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        /* Right Side: 50 Sidebar Boxes */
+        .sidebar {
+            flex: 1;
+            min-width: 320px;
+        }
+
+        .sidebar-widget-header {
             background: var(--bg-card);
             border: 1px solid var(--card-border);
-            border-radius: 16px;
-            padding: 18px;
+            border-radius: 10px;
+            padding: 15px;
             margin-bottom: 15px;
             text-align: center;
         }
 
-        .sidebar-widget h3 {
-            margin-top: 0;
-            margin-bottom: 8px;
-            font-size: 1.1rem;
+        .sidebar-widget-header h3 {
+            margin: 0;
             color: var(--color-purple);
+            font-size: 1.1rem;
         }
 
-        /* Container for 50 boxes under Live Updates */
         .sidebar-boxes-list {
             display: flex;
             flex-direction: column;
-            gap: 14px;
-            max-height: 80vh;
-            overflow-y: auto;
-            padding-right: 6px;
+            gap: 12px;
+            /* Scroll Container Hata Diya Hai Taki Saare Boxes Dikh Saken */
         }
 
-        .sidebar-boxes-list::-webkit-scrollbar {
-            width: 6px;
-        }
-        
-        .sidebar-boxes-list::-webkit-scrollbar-thumb {
-            background: var(--card-border);
-            border-radius: 10px;
-        }
-
-        /* Dynamic Box Variations */
         .side-box {
             background: var(--bg-card);
             border: 1px solid var(--card-border);
-            border-radius: 12px;
+            border-radius: 8px;
             padding: 14px;
-            transition: all 0.2s ease;
+            transition: transform 0.2s;
         }
 
         .side-box:hover {
@@ -175,59 +161,31 @@
             transform: translateX(3px);
         }
 
-        /* Style Type 1: Purple Accent */
-        .box-style-1 {
-            border-left: 4px solid var(--color-purple);
-        }
-        .box-style-1 .smartlink-btn {
-            background: linear-gradient(135deg, var(--color-purple), var(--color-skyblue));
-        }
+        .box-style-1 { border-left: 4px solid var(--color-purple); }
+        .box-style-1 .btn { background: var(--color-purple); }
 
-        /* Style Type 2: Red Alert / Breaking */
-        .box-style-2 {
-            border-left: 4px solid var(--color-red);
-            background: rgba(239, 68, 68, 0.05);
-        }
-        .box-style-2 .smartlink-btn {
-            background: linear-gradient(135deg, var(--color-red), var(--color-amber));
-        }
+        .box-style-2 { border-left: 4px solid var(--color-red); }
+        .box-style-2 .btn { background: var(--color-red); }
 
-        /* Style Type 3: Green Success / Finance */
-        .box-style-3 {
-            border-left: 4px solid var(--color-green);
-        }
-        .box-style-3 .smartlink-btn {
-            background: linear-gradient(135deg, var(--color-green), var(--color-skyblue));
-        }
+        .box-style-3 { border-left: 4px solid var(--color-green); }
+        .box-style-3 .btn { background: var(--color-green); }
 
-        /* Style Type 4: Amber Warning / Tech */
-        .box-style-4 {
-            border-left: 4px solid var(--color-amber);
-        }
-        .box-style-4 .smartlink-btn {
-            background: linear-gradient(135deg, var(--color-amber), var(--color-purple));
-        }
+        .box-style-4 { border-left: 4px solid var(--color-amber); }
+        .box-style-4 .btn { background: var(--color-amber); color: #000; }
 
-        /* Style Type 5: Skyblue Modern */
-        .box-style-5 {
-            border-left: 4px solid var(--color-skyblue);
-        }
-        .box-style-5 .smartlink-btn {
-            background: linear-gradient(135deg, var(--color-skyblue), var(--color-purple));
-        }
+        .box-style-5 { border-left: 4px solid var(--color-skyblue); }
+        .box-style-5 .btn { background: var(--color-skyblue); color: #000; }
 
         .box-header {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            font-size: 0.72rem;
+            font-size: 0.75rem;
             margin-bottom: 6px;
         }
 
         .box-tag {
             color: var(--color-skyblue);
-            font-weight: 700;
-            text-transform: uppercase;
+            font-weight: bold;
         }
 
         .box-time {
@@ -238,163 +196,192 @@
             font-size: 0.88rem;
             font-weight: 600;
             color: var(--text-main);
-            margin: 0 0 10px 0;
+            margin-bottom: 10px;
             line-height: 1.35;
         }
 
-        .smartlink-btn {
-            display: inline-block;
-            width: 100%;
+        .btn {
+            display: block;
             text-align: center;
             color: #ffffff;
             font-size: 0.78rem;
-            font-weight: 700;
+            font-weight: bold;
             padding: 7px 0;
-            border-radius: 6px;
+            border-radius: 5px;
             text-decoration: none;
-            box-sizing: border-box;
-            transition: opacity 0.2s;
         }
 
-        .smartlink-btn:hover {
-            opacity: 0.9;
+        @media (max-width: 850px) {
+            .main-layout {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+            }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Chronicle 24/7</h1>
-        <p>Live News Feed & 50 Dynamic Trending Updates</p>
+        <h1>Chronicle 24/7 News</h1>
+        <p>Live News Feed & 50 Trending Updates</p>
     </header>
 
     <div class="container">
         <div class="main-layout">
             
-            <!-- Left Side Main News Content -->
+            <!-- LEFT AREA: MAIN NEWS ARTICLES -->
             <div class="main-news-section">
-                <h2 class="section-title">📰 Main News Feed</h2>
-                
+                <h2 class="section-title">📰 Top Headlines</h2>
+
+                <!-- News Article 1 -->
                 <div class="main-news-card">
                     <div>
-                        <span class="news-tag">BREAKING</span>
-                        <span class="news-date">📅 Just Now</span>
+                        <span class="news-badge">BREAKING NEWS</span>
+                        <span class="news-date">📅 10 mins ago</span>
                     </div>
-                    <h3>Global Tech Summit Announces Breakthrough in Artificial Intelligence</h3>
-                    <p class="news-content">
-                        Industry leaders have unveiled breakthrough developments in quantum neural networks, allowing real-time processing capabilities for complex automated systems worldwide.
-                    </p>
+                    <h3>Global Tech Summit Unveils Next-Generation AI Supercomputers</h3>
+                    <p>Scientists and tech leaders have officially demonstrated real-time quantum neural network processing, enabling instant language translation and complex climate simulation at unprecedented speeds.</p>
+                    <a href="#" class="read-more-btn">Read Full Article ➔</a>
                 </div>
 
+                <!-- News Article 2 -->
                 <div class="main-news-card">
                     <div>
-                        <span class="news-tag">MARKETS</span>
-                        <span class="news-date">📅 15 mins ago</span>
+                        <span class="news-badge" style="background: var(--color-purple);">MARKETS</span>
+                        <span class="news-date">📅 35 mins ago</span>
                     </div>
-                    <h3>International Trade Agreements Reach New Historic Accord</h3>
-                    <p class="news-content">
-                        Key economic allies have finalized new digital commerce frameworks aiming to boost cross-border startup ecosystems and reduce export friction globally.
-                    </p>
+                    <h3>Global Markets Rally Following International Trade Framework</h3>
+                    <p>Stock indices across Asian and European markets recorded significant gains today after cross-border trade agreements eased supply chain tariffs on semiconductor components.</p>
+                    <a href="#" class="read-more-btn">Read Full Article ➔</a>
+                </div>
+
+                <!-- News Article 3 -->
+                <div class="main-news-card">
+                    <div>
+                        <span class="news-badge" style="background: var(--color-green);">SPACE</span>
+                        <span class="news-date">📅 1 hour ago</span>
+                    </div>
+                    <h3>Deep Space Observatory Detects New Earth-Sized Exoplanet</h3>
+                    <p>Astronomers using advanced space telescope arrays have confirmed the discovery of an exoplanet located in the habitable zone of a red dwarf star system.</p>
+                    <a href="#" class="read-more-btn">Read Full Article ➔</a>
+                </div>
+
+                <!-- News Article 4 -->
+                <div class="main-news-card">
+                    <div>
+                        <span class="news-badge" style="background: var(--color-amber); color: black;">EV TECH</span>
+                        <span class="news-date">📅 2 hours ago</span>
+                    </div>
+                    <h3>Solid-State Battery Breakthrough Promises 1,000 KM EV Range</h3>
+                    <p>Automotive researchers have successfully tested high-density solid-state battery cells that charge to 80% in just 8 minutes while offering double the life cycle of lithium-ion batteries.</p>
+                    <a href="#" class="read-more-btn">Read Full Article ➔</a>
+                </div>
+
+                <!-- News Article 5 -->
+                <div class="main-news-card">
+                    <div>
+                        <span class="news-badge" style="background: var(--color-skyblue); color: black;">HEALTH</span>
+                        <span class="news-date">📅 3 hours ago</span>
+                    </div>
+                    <h3>Medical Trial Validates New Target for Gene Therapy Research</h3>
+                    <p>Clinical trials for a targeted gene delivery system have shown promising early results in reversing genetic vision deterioration in adult patients.</p>
+                    <a href="#" class="read-more-btn">Read Full Article ➔</a>
                 </div>
             </div>
 
-            <!-- Right Sidebar -->
+            <!-- RIGHT AREA: ALL 50 SIDEBAR BOXES -->
             <aside class="sidebar">
-                
-                <!-- Live Updates Box -->
-                <div class="sidebar-widget">
+                <div class="sidebar-widget-header">
                     <h3>⚡ Live Updates (50 Topics)</h3>
-                    <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Scroll down to view all 50 trending news boxes.</p>
                 </div>
 
-                <!-- 50 Dynamic Boxes directly below Live Updates -->
                 <div class="sidebar-boxes-list" id="sidebarBoxesList">
-                    <!-- JavaScript will generate 50 boxes here -->
+                    <!-- JavaScript automatically inserts 50 boxes here -->
                 </div>
-
             </aside>
 
         </div>
     </div>
 
     <script>
-        // Data for 50 Trending Topics with Sequential Smartlink Placeholders
-        const rawItems = [
-            { tag: "AI Tech", style: "box-style-1", btnText: "🔥 View Story ➔", title: "Quantum AI Chip Breakthrough Announced", time: "12m ago", link: "https://www.profitableratecpmnetwork.com/mcrcerya?key=a55bd3205d87cc3b096cfd06eabbb7c4
-" },
-            { tag: "Crypto", style: "box-style-2", btnText: "⚡ Read Updates ➔", title: "Bitcoin Surges Past Key Resistance Level", time: "24m ago", link: "paste smartlink 2 here" },
-            { tag: "Markets", style: "box-style-3", btnText: "🚀 Deep Dive ➔", title: "NASA Captures High-Definition Exoplanet", time: "36m ago", link: "paste smartlink 3 here" },
-            { tag: "Cybersecurity", style: "box-style-4", btnText: "💥 Breaking News ➔", title: "Central Banks Adjust Interest Rates Globally", time: "48m ago", link: "paste smartlink 4 here" },
-            { tag: "Space", style: "box-style-5", btnText: "📈 Check Trends ➔", title: "Solid-State Battery Promises 1000KM EV Range", time: "1h ago", link: "paste smartlink 5 here" },
-            { tag: "Gaming", style: "box-style-1", btnText: "🔥 View Story ➔", title: "Zero-Day Vulnerability Discovered in IoT", time: "1.2h ago", link: "paste smartlink 6 here" },
-            { tag: "EV Tech", style: "box-style-2", btnText: "⚡ Read Updates ➔", title: "Gene Therapy Trial Reverses Vision Loss", time: "1.4h ago", link: "paste smartlink 7 here" },
-            { tag: "Energy", style: "box-style-3", btnText: "🚀 Deep Dive ➔", title: "World's Largest Floating Solar Farm Starts", time: "1.6h ago", link: "paste smartlink 8 here" },
-            { tag: "Robotics", style: "box-style-4", btnText: "💥 Breaking News ➔", title: "Global Esports Event Draws 100M Viewers", time: "1.8h ago", link: "paste smartlink 9 here" },
-            { tag: "Health", style: "box-style-5", btnText: "📈 Check Trends ➔", title: "Holographic Smart Glasses Aim to Replace Phones", time: "2h ago", link: "paste smartlink 10 here" },
-            { tag: "AI Tech", style: "box-style-1", btnText: "🔥 View Story ➔", title: "Dual-Folding Screen Device Launched Globally", time: "2.2h ago", link: "paste smartlink 11 here" },
-            { tag: "Crypto", style: "box-style-2", btnText: "⚡ Read Updates ➔", title: "Autonomous AI Agents Complete Software Cycle", time: "2.4h ago", link: "paste smartlink 12 here" },
-            { tag: "Markets", style: "box-style-3", btnText: "🚀 Deep Dive ➔", title: "Commercial Supersonic Jet Completes Test Flight", time: "2.6h ago", link: "paste smartlink 13 here" },
-            { tag: "Cybersecurity", style: "box-style-4", btnText: "💥 Breaking News ➔", title: "Streaming Giant Signs Record $2B Studio Deal", time: "2.8h ago", link: "paste smartlink 14 here" },
-            { tag: "Space", style: "box-style-5", btnText: "📈 Check Trends ➔", title: "New Direct Air Carbon Capture Plant Opens", time: "3h ago", link: "paste smartlink 15 here" },
-            { tag: "Gaming", style: "box-style-1", btnText: "🔥 View Story ➔", title: "Cross-Border Instant Digital Payment Rail", time: "3.2h ago", link: "paste smartlink 16 here" },
-            { tag: "EV Tech", style: "box-style-2", btnText: "⚡ Read Updates ➔", title: "Humanoid Robots Deployed in Logistics Hubs", time: "3.4h ago", link: "paste smartlink 17 here" },
-            { tag: "Energy", style: "box-style-3", btnText: "🚀 Deep Dive ➔", title: "Drone Delivery Coverage Expands to 50 Cities", time: "3.6h ago", link: "paste smartlink 18 here" },
-            { tag: "Robotics", style: "box-style-4", btnText: "💥 Breaking News ➔", title: "Brain Interface Allows Typing 80 Words Per Min", time: "3.8h ago", link: "paste smartlink 19 here" },
-            { tag: "Health", style: "box-style-5", btnText: "📈 Check Trends ➔", title: "New Web Engine Standard Speeds Up Browsing", time: "4h ago", link: "paste smartlink 20 here" },
-            { tag: "AI Tech", style: "box-style-1", btnText: "🔥 View Story ➔", title: "Fusion Energy Reactor Sustains Plasma Output", time: "4.2h ago", link: "paste smartlink 21 here" },
-            { tag: "Crypto", style: "box-style-2", btnText: "⚡ Read Updates ➔", title: "Asteroid Mining Probe Transmits Resource Data", time: "4.4h ago", link: "paste smartlink 22 here" },
-            { tag: "Markets", style: "box-style-3", btnText: "🚀 Deep Dive ➔", title: "Graphene Supercapacitors Enable 3-Min Charging", time: "4.6h ago", link: "paste smartlink 23 here" },
-            { tag: "Cybersecurity", style: "box-style-4", btnText: "💥 Breaking News ➔", title: "Global Microchip Supply Chain Reaches Peak Output", time: "4.8h ago", link: "paste smartlink 24 here" },
-            { tag: "Space", style: "box-style-5", btnText: "📈 Check Trends ➔", title: "Bioprinting Breakthrough Recreates Human Tissue", time: "5h ago", link: "paste smartlink 25 here" },
-            { tag: "Gaming", style: "box-style-1", btnText: "🔥 View Story ➔", title: "6G Network Architecture Tests Reach 1 Terabit", time: "5.2h ago", link: "paste smartlink 26 here" },
-            { tag: "EV Tech", style: "box-style-2", btnText: "⚡ Read Updates ➔", title: "AI Medical Diagnostic Tool Receives FDA Approval", time: "5.4h ago", link: "paste smartlink 27 here" },
-            { tag: "Energy", style: "box-style-3", btnText: "🚀 Deep Dive ➔", title: "Offshore Wind Turbines Generate Record Output", time: "5.6h ago", link: "paste smartlink 28 here" },
-            { tag: "Robotics", style: "box-style-4", btnText: "💥 Breaking News ➔", title: "Decentralized Social Protocol Crosses 50M Users", time: "5.8h ago", link: "paste smartlink 29 here" },
-            { tag: "Health", style: "box-style-5", btnText: "📈 Check Trends ➔", title: "Quantum Encryption Key Deployed in Banking", time: "6h ago", link: "paste smartlink 30 here" },
-            { tag: "AI Tech", style: "box-style-1", btnText: "🔥 View Story ➔", title: "Smart Agriculture Drones Boost Crop Yields 40%", time: "6.2h ago", link: "paste smartlink 31 here" },
-            { tag: "Crypto", style: "box-style-2", btnText: "⚡ Read Updates ➔", title: "Spacecraft Propelled by Solar Sail Reaches Orbit", time: "6.4h ago", link: "paste smartlink 32 here" },
-            { tag: "Markets", style: "box-style-3", btnText: "🚀 Deep Dive ➔", title: "Generative Video AI Models Create HD Movies", time: "6.6h ago", link: "paste smartlink 33 here" },
-            { tag: "Cybersecurity", style: "box-style-4", btnText: "💥 Breaking News ➔", title: "Next-Gen Lithium-Sulfur Batteries Enter Testing", time: "6.8h ago", link: "paste smartlink 34 here" },
-            { tag: "Space", style: "box-style-5", btnText: "📈 Check Trends ➔", title: "Global Renewable Energy Share Crosses 40%", time: "7h ago", link: "paste smartlink 35 here" },
-            { tag: "Gaming", style: "box-style-1", btnText: "🔥 View Story ➔", title: "Virtual Reality Operating System Released", time: "7.2h ago", link: "paste smartlink 36 here" },
-            { tag: "EV Tech", style: "box-style-2", btnText: "⚡ Read Updates ➔", title: "Autonomous Freight Trucks Clear Highway Testing", time: "7.4h ago", link: "paste smartlink 37 here" },
-            { tag: "Energy", style: "box-style-3", btnText: "🚀 Deep Dive ➔", title: "Exoskeleton Suits Standardized for Factory Work", time: "7.6h ago", link: "paste smartlink 38 here" },
-            { tag: "Robotics", style: "box-style-4", btnText: "💥 Breaking News ➔", title: "Micro-Nuclear Reactors Approved for Rural Grids", time: "7.8h ago", link: "paste smartlink 39 here" },
-            { tag: "Health", style: "box-style-5", btnText: "📈 Check Trends ➔", title: "Deep Ocean Exploration Discovers New Ecosystems", time: "8h ago", link: "paste smartlink 40 here" },
-            { tag: "AI Tech", style: "box-style-1", btnText: "🔥 View Story ➔", title: "Hyperloop Vacuum Track Test Reaches High Speed", time: "8.2h ago", link: "paste smartlink 41 here" },
-            { tag: "Crypto", style: "box-style-2", btnText: "⚡ Read Updates ➔", title: "AI Cybersecurity Agent Defends Cloud Infrastructure", time: "8.4h ago", link: "paste smartlink 42 here" },
-            { tag: "Markets", style: "box-style-3", btnText: "🚀 Deep Dive ➔", title: "Synthetic Biology Startup Creates Biodegradable Plastic", time: "8.6h ago", link: "paste smartlink 43 here" },
-            { tag: "Cybersecurity", style: "box-style-4", btnText: "💥 Breaking News ➔", title: "Smart City Traffic Mesh System Reduces Congestion", time: "8.8h ago", link: "paste smartlink 44 here" },
-            { tag: "Space", style: "box-style-5", btnText: "📈 Check Trends ➔", title: "Orbital Space Hotel Begins Accepting Reservations", time: "9h ago", link: "paste smartlink 45 here" },
-            { tag: "Gaming", style: "box-style-1", btnText: "🔥 View Story ➔", title: "Wearable Glucose Sensor Operates Without Needles", time: "9.2h ago", link: "paste smartlink 46 here" },
-            { tag: "EV Tech", style: "box-style-2", btnText: "⚡ Read Updates ➔", title: "Carbon-Negative Concrete Standardized Worldwide", time: "9.4h ago", link: "paste smartlink 47 here" },
-            { tag: "Energy", style: "box-style-3", btnText: "🚀 Deep Dive ➔", title: "Superconducting Material Reaches Room Temp Milestone", time: "9.6h ago", link: "paste smartlink 48 here" },
-            { tag: "Robotics", style: "box-style-4", btnText: "💥 Breaking News ➔", title: "3D-Printed Housing Complexes Completed in 48 Hours", time: "9.8h ago", link: "paste smartlink 49 here" },
-            { tag: "Health", style: "box-style-5", btnText: "📈 Check Trends ➔", title: "Next-Gen Subsea Fiber Cable Boosts Transatlantic Speeds", time: "10h ago", link: "paste smartlink 50 here" }
+        // Array of 50 News Items
+        var newsTopics = [
+            "Bitcoin Surges Past Key Resistance Level",
+            "NASA Captures High-Definition Exoplanet Image",
+            "Central Banks Adjust Interest Rates Globally",
+            "Solid-State Battery Promises 1000KM Range",
+            "Zero-Day Vulnerability Discovered in IoT Devices",
+            "Gene Therapy Trial Reverses Vision Loss",
+            "World's Largest Floating Solar Farm Opens",
+            "Global Esports Event Draws 100M Viewers",
+            "Holographic Smart Glasses Aim to Replace Phones",
+            "Dual-Folding Screen Device Launched Globally",
+            "Autonomous AI Agents Complete Software Cycle",
+            "Commercial Supersonic Jet Completes Test Flight",
+            "Streaming Giant Signs Record $2B Studio Deal",
+            "New Direct Air Carbon Capture Plant Opens",
+            "Cross-Border Instant Digital Payment Rail",
+            "Humanoid Robots Deployed in Logistics Hubs",
+            "Drone Delivery Coverage Expands to 50 Cities",
+            "Brain Interface Allows Typing 80 Words Per Min",
+            "New Web Engine Standard Speeds Up Browsing",
+            "Fusion Energy Reactor Sustains Plasma Output",
+            "Asteroid Mining Probe Transmits Resource Data",
+            "Graphene Supercapacitors Enable Fast Charging",
+            "Global Microchip Supply Chain Reaches Peak",
+            "Bioprinting Breakthrough Recreates Human Tissue",
+            "6G Network Architecture Tests Reach 1 Terabit",
+            "AI Medical Diagnostic Tool Receives Approval",
+            "Offshore Wind Turbines Generate Record Output",
+            "Decentralized Social Protocol Crosses 50M Users",
+            "Quantum Encryption Key Deployed in Banking",
+            "Smart Agriculture Drones Boost Crop Yields 40%",
+            "Spacecraft Propelled by Solar Sail Reaches Orbit",
+            "Generative Video AI Models Create HD Movies",
+            "Next-Gen Lithium-Sulfur Batteries Enter Testing",
+            "Global Renewable Energy Share Crosses 40%",
+            "Virtual Reality Operating System Released",
+            "Autonomous Freight Trucks Clear Highway Testing",
+            "Exoskeleton Suits Standardized for Factory Work",
+            "Micro-Nuclear Reactors Approved for Rural Grids",
+            "Deep Ocean Exploration Discovers New Species",
+            "Hyperloop Vacuum Track Test Reaches High Speed",
+            "AI Cybersecurity Agent Defends Cloud Systems",
+            "Synthetic Biology Startup Creates Green Plastic",
+            "Smart City Traffic System Reduces Congestion",
+            "Orbital Space Hotel Begins Accepting Bookings",
+            "Wearable Glucose Sensor Operates Needle-Free",
+            "Carbon-Negative Concrete Standardized Globally",
+            "Room Temperature Superconductor Breakthrough",
+            "3D-Printed Housing Completed in 48 Hours",
+            "Subsea Fiber Cable Boosts Transatlantic Speeds",
+            "Quantum Sensors Improve Underground Mapping"
         ];
 
-        function renderSidebarBoxes() {
-            const container = document.getElementById('sidebarBoxesList');
-            container.innerHTML = '';
+        var tags = ["AI Tech", "Crypto", "Markets", "Cybersecurity", "Space", "EV Tech", "Energy", "Robotics", "Health"];
+        var styles = ["box-style-1", "box-style-2", "box-style-3", "box-style-4", "box-style-5"];
 
-            rawItems.forEach(item => {
-                const box = document.createElement('div');
-                box.className = `side-box ${item.style}`;
-                box.innerHTML = `
-                    <div class="box-header">
-                        <span class="box-tag">${item.tag}</span>
-                        <span class="box-time">🕒 ${item.time}</span>
-                    </div>
-                    <div class="box-title">${item.title}</div>
-                    <a href="${item.link}" target="_blank" class="smartlink-btn">
-                        ${item.btnText}
-                    </a>
-                `;
-                container.appendChild(box);
-            });
+        var container = document.getElementById('sidebarBoxesList');
+        var generatedHtml = '';
+
+        for (var i = 0; i < newsTopics.length; i++) {
+            var currentStyle = styles[i % styles.length];
+            var currentTag = tags[i % tags.length];
+            var timeAgo = (i + 1) * 12 + "m ago";
+
+            generatedHtml += '<div class="side-box ' + currentStyle + '">' +
+                '<div class="box-header">' +
+                    '<span class="box-tag">' + currentTag + '</span>' +
+                    '<span class="box-time">🕒 ' + timeAgo + '</span>' +
+                '</div>' +
+                '<div class="box-title">' + newsTopics[i] + '</div>' +
+                '<a href="#" target="_blank" class="btn">Read Updates ➔</a>' +
+            '</div>';
         }
 
-        document.addEventListener('DOMContentLoaded', renderSidebarBoxes);
+        container.innerHTML = generatedHtml;
     </script>
 </body>
 </html>
